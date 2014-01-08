@@ -8,7 +8,9 @@ package t2kb;
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -17,9 +19,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -83,9 +88,9 @@ public class SparqlProxy
                                             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"+
                                             "PREFIX owl:    <http://www.w3.org/2002/07/owl#>"+
                                             "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"+
-                                            "PREFIX foaf: <http://xmlns.com/foaf/0.1/>"+
-                                            "PREFIX dc: <http://purl.org/dc/elements/1.1/>"+
-                                            "PREFIX pf: <http://jena.hpl.hp.com/ARQ/property#>"+
+                                            //"PREFIX foaf: <http://xmlns.com/foaf/0.1/>"+
+                                            //"PREFIX dc: <http://purl.org/dc/elements/1.1/>"+
+                                            //"PREFIX pf: <http://jena.hpl.hp.com/ARQ/property#>"+
                                             "PREFIX agrovoc: <http://aims.fao.org/aos/agrontology#>"+q;
              return query;
         }
@@ -96,9 +101,9 @@ public class SparqlProxy
                                             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"+
                                             "PREFIX owl:    <http://www.w3.org/2002/07/owl#>"+
                                             "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"+
-                                            "PREFIX foaf: <http://xmlns.com/foaf/0.1/>"+
-                                            "PREFIX dc: <http://purl.org/dc/elements/1.1/>"+
-                                            "PREFIX pf: <http://jena.hpl.hp.com/ARQ/property#>"+
+                                            //"PREFIX foaf: <http://xmlns.com/foaf/0.1/>"+
+                                            //"PREFIX dc: <http://purl.org/dc/elements/1.1/>"+
+                                            //"PREFIX pf: <http://jena.hpl.hp.com/ARQ/property#>"+
                                             "PREFIX agrovoc: <http://aims.fao.org/aos/agrontology#>");
              query.append(q);
              
@@ -127,6 +132,19 @@ public class SparqlProxy
         }
       
       
+        public static void saveQueryOnFile(String fileName, String query)
+        {
+            try 
+            {
+                FileUtils.writeStringToFile(new File("out/backupQueries/"+fileName),query);
+            } 
+            catch (IOException ex) 
+            {
+                System.err.println("FAILED TO BACKUP the query into file "+fileName);
+            }
+        }
+        
+        
     // non static part
     private String urlServer;
     
@@ -139,6 +157,7 @@ public class SparqlProxy
         {
             HttpURLConnection connection = null;  
             JSONArray arr = null;
+            String jsonRet = "";
             try 
             {
                  URL url = new URL(this.urlServer+"query?output=json&query="+URLEncoder.encode(query, "UTF-8"));
@@ -159,13 +178,18 @@ public class SparqlProxy
                 response.append('\r');
               }
               rd.close();
-             String  jsonRet = response.toString();
+              jsonRet = response.toString();
             
               JSONObject json = (JSONObject) JSONSerializer.toJSON(jsonRet);
               arr =  json.getJSONObject("results").getJSONArray("bindings");
             }
             catch(Exception e)
-            {System.err.println("ERROR during the response parsing...");}
+            {
+                System.err.println("ERROR during the response parsing... : "+e);
+                System.err.println(query);
+                SparqlProxy.saveQueryOnFile("SELECT_query", query);
+                System.exit(0);
+            }
              finally 
             {
               if(connection != null) 
@@ -226,18 +250,12 @@ public class SparqlProxy
                   rep += line;
               }
               writer.close();
-              reader.close();   
-              if(!rep.contains("Update succeeded"))
-              {
-                  ret =false;
-                  System.err.println("ERROR UPDATE : "+rep);
-                  System.exit(0);
-              }
+              reader.close();  
             }
             catch(Exception e)
             {
                 System.err.println("ERROR UPDATE : "+e);
-                //System.exit(0);
+                SparqlProxy.saveQueryOnFile("Query.sparql", query.toString());
                 ret = false;
             }
              finally 
@@ -285,9 +303,8 @@ public class SparqlProxy
             }
     }
         
-        public boolean isSubClassOfStar(String s1, String s2)
+        public boolean sendAskQuery(String query)
         {
-            String query = SparqlProxy.makeQuery("ASK {<"+s1+"> rdfs:subClassOf* <"+s2+">}");
             boolean ret = false;
             
             HttpURLConnection connection = null;  
@@ -327,7 +344,13 @@ public class SparqlProxy
               }
             }
               return ret;
+        }
+        
+        public boolean isSubClassOfStar(String s1, String s2)
+        {
+            String query = SparqlProxy.makeQuery("ASK {<"+s1+"> rdfs:subClassOf* <"+s2+">}");
             
+            return this.sendAskQuery(query);
             
         }
     

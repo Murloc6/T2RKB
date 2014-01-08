@@ -25,6 +25,7 @@ public class ThesaurusProcess
     {
         this.spIn = SparqlProxy.getSparqlProxy(urlServerIn);
         this.spOut = SparqlProxy.getSparqlProxy(urlServerOut);
+        this.spOut.storeData(new StringBuilder("DELETE WHERE {?a ?b ?c}")); // clean the output sparql endpoint before adding contents
     }
     
     public void loadAllConcepts()
@@ -44,6 +45,7 @@ public class ThesaurusProcess
         {
             
             String currentQueryPart = "";
+            String currentObjPropQuerypart = "";
             
             String uri = s.getJSONObject("c").getString("value");
             currentQueryPart += "<"+uri+"> rdf:type owl:Class; ";
@@ -71,7 +73,7 @@ public class ThesaurusProcess
                 }
                 else if(!(SparqlProxy.isExcludeRel(rel)) && val.startsWith("http://aims.fao.org/aos/agrovoc/"))
                 {
-                    currentQueryPart += " <"+rel+">  <"+val+">;";
+                    //currentQueryPart += " <"+rel+">  <"+val+">;";
                     /* TODO stock all the domains and ranges of objectproperties*/
                     OntologyRelation or = objProp.get(rel);
                     if(or == null)
@@ -79,13 +81,14 @@ public class ThesaurusProcess
                         or = new OntologyRelation(rel, this.spOut);
                         objProp.put(rel, or);
                     }
-                    or.addDomain(uri);
-                    or.addRange(val);
+                    String subProp = or.addRangeDomain(uri, val);
+                    currentObjPropQuerypart += subProp;
                 }
                 
             }
             currentQueryPart = currentQueryPart.substring(0, currentQueryPart.lastIndexOf(";"));
             currentQueryPart += ".";
+            currentQueryPart += currentObjPropQuerypart;
             
             int fullLength = updateQuery.length()+currentQueryPart.length();
             if(fullLength > 4000000) // limit for the fuseki update query length
@@ -107,23 +110,53 @@ public class ThesaurusProcess
         
         if(!updateQuery.equals("INSERT DATA {"))
         {
+            nbQuery ++;
             updateQuery.append("}");
             this.spOut.storeData(updateQuery);
+            System.out.println(i+" concepts treated (query n° "+nbQuery+")...");
         }
         
         
         
         System.out.println("Begin object properties definitions ("+objProp.values().size()+" objProps) ...");
         int nbObjProp = 0;
+        nbQuery = 0;
+        int nbObjPropCached = 0;
         updateQuery = new StringBuilder("INSERT DATA {");
+        
         for(OntologyRelation or : objProp.values())
         {
+            StringBuilder currentQueryPart = new StringBuilder("");
             nbObjProp ++;
-            updateQuery.append(or.toTtl());
-            System.out.println(nbObjProp+" objProps treated ...");
+            currentQueryPart.append(or.toTtl(this.spOut));
+            //currentQueryPart.append(or.getSubPropertiesTtl());
+            
+            int fullLength = updateQuery.length()+currentQueryPart.length();
+            if(fullLength > 4000000) // limit for the fuseki limit POST request
+            {
+                nbQuery ++;
+                updateQuery.append("}");
+                boolean ret = this.spOut.storeData(updateQuery);
+                System.out.println(nbObjProp+" properties treated (query n° "+nbQuery+")...");
+                if(!ret) //if store query bugged
+                    System.exit(0);
+                updateQuery = new StringBuilder("INSERT DATA {"+currentQueryPart);
+                nbObjPropCached = 0;
+            }
+            else
+            {
+                updateQuery.append(currentQueryPart);
+            }
+            nbObjPropCached++;
+            System.out.println(nbObjPropCached+" Object properties definitions cached");
         }
-        updateQuery.append("}");
-        this.spOut.storeData(updateQuery);
+        if(!updateQuery.equals("INSERT DATA {"))
+        {
+            nbQuery ++;
+            updateQuery.append("}");
+            this.spOut.storeData(updateQuery);
+            System.out.println(nbObjProp+" properties treated (query n° "+nbQuery+")...");
+        }
         
         
         
