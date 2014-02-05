@@ -121,8 +121,14 @@ public class OntologyRelation
         }*/
         
         
+        String subPropUri = this.relURI+"_"+this.idSubProperties;
+        String ret = "<"+subPropUri+"> rdf:type owl:ObjectProperty; rdfs:subPropertyOf <"+this.relURI+">; rdfs:label \""+this.label+"\".";
+        //rdfs:domain <"+uriDomain+">; rdfs:range <"+uriRange+">.
         
-        String ret = "<"+this.relURI+"_"+this.idSubProperties+"> rdf:type owl:ObjectProperty; rdfs:subPropertyOf <"+this.relURI+">; rdfs:label \""+this.label+"\"; rdfs:domain <"+uriDomain+">; rdfs:range <"+uriRange+">.";
+        ret += "<"+uriDomain+">  rdfs:subClassOf  [ a owl:Restriction ; " +
+        " owl:onProperty <"+subPropUri+"> ; " +
+        " owl:allValuesFrom <"+uriRange+">" +
+        " ] .";
         
         this.idSubProperties ++;
         
@@ -173,20 +179,20 @@ public class OntologyRelation
     
     public String toTtl(SparqlProxy spOut)
     {
-        String ret = "<"+this.relURI+"> rdf:type owl:ObjectProperty;";
-        ret += "rdfs:domain [ a owl:Class; owl:unionOf (";
+        String ret = "<"+this.relURI+"> rdf:type owl:ObjectProperty.";
+        /*ret += "rdfs:domain [ a owl:Class; owl:unionOf (";
         for(String domain : this.getTopDomain())
         {
             ret += " <"+domain+"> ";
         }
-        ret += ")];";
+        ret += ")];";*/
         
-        ret += "rdfs:range [ a owl:Class; owl:unionOf (";
+        /*ret += "rdfs:range [ a owl:Class; owl:unionOf (";
         for(String range : this.getTopRange())
         {
             ret += " <"+range+"> ";
         }
-        ret += ")].";
+        ret += ")].";*/
         
         
         return ret;

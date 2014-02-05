@@ -26,7 +26,8 @@ public class T2KB {
      */
     public static void main(String[] args) 
     {
-       ThesaurusProcess tp = new ThesaurusProcess("http://localhost:3030/AGROVOC-SKOS/", "http://localhost:3030/AGROVOC_OWL_OUT/");
+       ThesaurusProcess tp = new ThesaurusProcess("http://localhost:3030/AGROVOC-SKOSIFIED/", "http://localhost:3030/T2KB_OUT/");
+       
        System.out.println("Begin thesaurus treatment ...");
         tp.loadAllConcepts();
         System.out.println("thesaurus treated!");

@@ -6,8 +6,10 @@
 
 package ThesaurusTreatment;
 
+import Disambiguator.WordNetDesambiguisator;
 import java.util.ArrayList;
 import java.util.HashMap;
+import net.didion.jwnl.JWNLException;
 import net.sf.json.JSONObject;
 import t2kb.SparqlProxy;
 
@@ -25,16 +27,25 @@ public class ThesaurusProcess
     {
         this.spIn = SparqlProxy.getSparqlProxy(urlServerIn);
         this.spOut = SparqlProxy.getSparqlProxy(urlServerOut);
+        System.out.println("Clearing ouput KB...");
         this.spOut.storeData(new StringBuilder("DELETE WHERE {?a ?b ?c}")); // clean the output sparql endpoint before adding contents
     }
     
     public void loadAllConcepts()
     {
+        System.out.println("Initialize WordNet ...");
+        WordNetDesambiguisator wnd = WordNetDesambiguisator.getWordNetConnector();
+        System.out.println("WordNet initialized!");
+        
         ArrayList<JSONObject> listURI = this.spIn.sendQuery("SELECT * WHERE{?c rdf:type skos:Concept.}");
         System.out.println(listURI.size()+" concepts  import");
         System.out.println("Begin creating raw KB ...");
         int i = 0;
         int nbQuery = 0;
+        int nbSubClassOf = 0;
+        int nbSubClassOfValidated = 0;
+        int nbSubClassOfNotFoundWN = 0;
+        int nbSubClassOfNotValidated = 0;
         
         // def relations
         HashMap<String, OntologyRelation> objProp = new HashMap<>();
@@ -69,7 +80,24 @@ public class ThesaurusProcess
                 }
                 else if(SparqlProxy.isSubRel(rel))
                 {
-                    currentQueryPart += " rdfs:subClassOf  <"+val+">; ";
+                    nbSubClassOf ++;
+                    Boolean isSubClassOf = this.isSubClassOf(wnd, uri, val);
+                    if(isSubClassOf == null || isSubClassOf)
+                    {
+                        currentQueryPart += " rdfs:subClassOf  <"+val+">; ";
+                        if(isSubClassOf == null)
+                        {
+                            nbSubClassOfNotFoundWN++;
+                        }
+                        else if(isSubClassOf)
+                        {
+                            nbSubClassOfValidated ++;
+                        }
+                    }
+                    else
+                    {
+                        nbSubClassOfNotValidated++;
+                    }
                 }
                 else if(!(SparqlProxy.isExcludeRel(rel)) && val.startsWith("http://aims.fao.org/aos/agrovoc/"))
                 {
@@ -161,6 +189,12 @@ public class ThesaurusProcess
         
         
         System.out.println("Raw KB ("+i+" concepts || "+nbObjProp+" objProps) created!");
+        
+        System.out.println("------------------");
+        System.out.println("Nb subClassOf discovered :  "+nbSubClassOf);
+        System.out.println("Nb subClassOf validated by WN : "+nbSubClassOfValidated);
+        System.out.println("Nb subClassOf not found in WN : "+nbSubClassOfNotFoundWN);
+        System.out.println("Nb subClassOf not validated by WN : "+nbSubClassOfNotValidated);
     }
  
     /* SPARQL query save (to facilitate copy/paste)
@@ -179,7 +213,57 @@ ASK {<http://aims.fao.org/aos/agrovoc/c_7955> rdfs:subClassOf* <http://aims.fao.
     
     */
     
-    
+    public Boolean isSubClassOf(WordNetDesambiguisator wnd, String uri1, String uri2)
+    {
+        Boolean ret = null;
+        ArrayList<String> labelsUri1 = new ArrayList<>();
+        ArrayList<String> labelsUri2 = new ArrayList<>();
+        
+        
+        ArrayList<JSONObject> retLabels = this.spIn.sendQuery("SELECT * WHERE {<"+uri1+"> skos:prefLabel ?label .   FILTER( LANGMATCHES(LANG(?label), \"en\")). }");
+        for(JSONObject jsono : retLabels)
+        {
+            labelsUri1.add(jsono.getJSONObject("label").getString("value"));
+        }
+        
+        retLabels = this.spIn.sendQuery("SELECT * WHERE {<"+uri2+"> skos:prefLabel ?label .   FILTER( LANGMATCHES(LANG(?label), \"en\")). }");
+        for(JSONObject jsono : retLabels)
+        {
+            labelsUri2.add(jsono.getJSONObject("label").getString("value"));
+        }
+        //System.out.println("INIT CARTESIAN : "+labelsUri1.size()+" X "+labelsUri2.size());
+        int i =0, j=0;
+        //Cartesian product to test all english terms couple
+        while( (ret == null  ||  !ret) && i<labelsUri1.size())
+        {
+            String term1 = labelsUri1.get(i);
+            if(wnd.isInWordNet(term1))
+            {
+                while((ret == null || !ret) && j<labelsUri2.size())
+                {
+                    String term2 = labelsUri2.get(j);
+                    if(wnd.isInWordNet(term2))
+                    {
+                        ret = wnd.getRelation(term1, term2).equalsIgnoreCase("subClassOf");
+                        //System.out.println("relation between : "+term1+" ---"+ret+"---> "+term2);
+                    }
+                    else
+                    {
+                        //System.out.println("Term not found in WN (2): "+term2);
+                    }
+                    j++;
+                }
+            }
+            else
+            {
+                //System.out.println("Term not found in WN : "+term1);
+            }
+            i++;
+        }
+        
+        //System.out.println("Return : "+ret);
+        return ret;
+    }
     
     public void exportKBToFile(String fileName)
     {

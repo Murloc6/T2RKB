@@ -5,6 +5,7 @@
         <group>
             <file>file:/run/media/murloc/DEXT/Thèse/Développement/T2KB/src/t2kb/SparqlProxy.java</file>
             <file>file:/run/media/murloc/DEXT/Thèse/Développement/T2KB/src/t2kb/T2KB.java</file>
+            <file>file:/run/media/murloc/DEXT/Thèse/Développement/T2KB/src/Disambiguator/WordNetDesambiguisator.java</file>
             <file>file:/run/media/murloc/DEXT/Thèse/Développement/T2KB/src/ThesaurusTreatment/OntologyRelation.java</file>
             <file>file:/run/media/murloc/DEXT/Thèse/Développement/T2KB/src/ThesaurusTreatment/ThesaurusProcess.java</file>
         </group>
