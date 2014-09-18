@@ -1,0 +1,694 @@
+<http://ontology.irstea.fr/AgronomicTaxon>
+        a       <http://www.w3.org/2002/07/owl#Ontology> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "created by irstea. This ontology is a module that is based on skos vocabulary, ODP from neon project : linnean taxonomy ODP and classification ODP. \nIt reuse also some rdf label of biol dataset."@en , "last update september 2014 "@en ;
+        <http://purl.org/dc/terms/creator>
+                "Catherine ROUSSEY from Irstea"@en ;
+        <http://purl.org/dc/terms/title>
+                "Agronomic Taxon module"@en ;
+        <http://www.w3.org/2002/07/owl#imports>
+                <http://www.w3.org/2004/02/skos/core> .
+
+<http://www.w3.org/2002/07/owl#example>
+        a       <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#classify>
+        a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "A relation between a Concept and an Entity, e.g. the Role student classifies a Person John" ;
+        <http://www.w3.org/2000/01/rdf-schema#domain>
+                <http://www.w3.org/2004/02/skos/core#Concept> ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/classification.owl#classifies\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "classifies"@en , "classe"@fr , "classifie"@fr , "classifica"@it ;
+        <http://www.w3.org/2000/01/rdf-schema#range>
+                <http://www.w3.org/2002/07/owl#Thing> ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern classification:classify" .
+
+<http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+        a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#TransitiveProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "This property relates two taxa, where the first is more specific than the second."@en ;
+        <http://www.w3.org/2000/01/rdf-schema#domain>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#hasHigherRank\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "has higher rank"@en , "a pour rang supérieur"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#range>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern LinneanTaxonomy:hashigherRank"@en .
+
+<http://ontology.irstea.fr/AgronomicTaxon#Taxon>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "A taxon is a concept denoting a type of organism or of a group of organisms."@en ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#Taxon\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Taxon"@en , "Rang"@fr , "Rang taxinomique"@fr , "Taxon"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern linneanTaxonomy:Taxon"@en ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2004/02/skos/core#Concept> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#hasLowerRank>
+        a       <http://www.w3.org/2002/07/owl#ObjectProperty> , <http://www.w3.org/2002/07/owl#TransitiveProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "This property relates two taxa, where the first is less specific than the second."@en ;
+        <http://www.w3.org/2000/01/rdf-schema#domain>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#hasLowerRank\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "has lower rank"@en , "a pour rang inférieur"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#range>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern LinneanTaxonomy:hasLowerRank"@en ;
+        <http://www.w3.org/2002/07/owl#inverseOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#isClassifiedBy>
+        a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "A relation between a Concept and an Entity, e.g. John is considered a typical rude man; your last concert constitutes the achievement of a lifetime; 20-year-old means she is mature enough." ;
+        <http://www.w3.org/2000/01/rdf-schema#domain>
+                <http://www.w3.org/2002/07/owl#Thing> ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/classification.owl#isClassifiedBy\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "is classified by"@en , "est classé par"@fr , "è classificato da"@it ;
+        <http://www.w3.org/2000/01/rdf-schema#range>
+                <http://www.w3.org/2004/02/skos/core#Concept> ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern classification: isClassifiedBy\n"@en ;
+        <http://www.w3.org/2002/07/owl#inverseOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#classify> ;
+        <http://www.w3.org/2002/07/owl#propertyChainAxiom>
+                ( <http://ontology.irstea.fr/AgronomicTaxon#isClassifiedBy> <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank> ) .
+
+<http://ontology.irstea.fr/AgronomicTaxon#isClassifiedByGenus>
+        a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "is classified by genus"@en , "est classé par genre"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#range>
+                <http://ontology.irstea.fr/AgronomicTaxon#GenusRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#isClassifiedBy> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#GenusRank>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Genus is the sixth highest traditional taxon. E.g., in the case of humans the genus is \"Homo\"."@en ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#Genus\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Genus"@en , "Genre"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern linneanTaxonomy:Genus" ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#isClassifiedByKingdom>
+        a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "is classified by kingdom"@en , "est classé par règne"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#range>
+                <http://ontology.irstea.fr/AgronomicTaxon#KingdomRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#isClassifiedBy> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#KingdomRank>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Kingdom is the highest traditional taxon. E.g., in the case of humans the kingdom is \"Animalia\"."@en ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#Kingdom" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Kingdom"@en , "Règne"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern linneanTaxonomy:Kingdom"@en ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#isClassifiedBySpecy>
+        a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "is classified by species"@en , "est classé par espèce"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#range>
+                <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#isClassifiedBy> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#SpecyRank>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Species is the lowest traditional taxon. E.g., in the case of humans the species is \"Homo sapiens\"."@en ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#Species\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Species"@en , "Espèce"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern linneanTaxonomy:Species"@en ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#isClassifiedByVariety>
+        a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "is classified by variety"@en , "est classé par variété"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#range>
+                <http://ontology.irstea.fr/AgronomicTaxon#VarietyRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#isClassifiedBy> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#VarietyRank>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Une variété est un rang taxinomique de niveau inférieur au rang d'espèce. Ce rang est utilisé en botanique et en mycologie.\nsource wikipedia"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Variety"@en , "Variété"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#memberScheme>
+        a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Relates a skos:ConceptScheme to its members, some skos:concepts. \nA concept scheme has several members.\n"@en ;
+        <http://www.w3.org/2000/01/rdf-schema#domain>
+                <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "is member of scheme"@en , "a pour membre"@fr , "a pour élément"@fr ;
+        <http://www.w3.org/2002/07/owl#inverseOf>
+                <http://www.w3.org/2004/02/skos/core#inScheme> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+        a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "has scientific name"@en , "a pour nom scientifique"@fr .
+
+<http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+        a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Un nom vernaculaire est un nom usuel, en langue locale, donné à une ou plusieurs espèces animales ou végétales dans son pays ou sa région d'origine. Il peut donc désigner des taxons très différents selon le contexte. Les noms vernaculaires sont souvent repris pour former la base des noms normalisés ou des noms vulgaires créés pour permettre la vulgarisation des noms scientifiques. Malgré leurs imprécisions, ils ont souvent la faveur dans le langage courant et font partie de la culture populaire.\nsource wikipedia"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "has common name"@en , "has vernacular name"@en , "a pour nom commun"@fr , "a pour nom vernaculaire"@fr .
+
+<http://ontology.irstea.fr/AgronomicTaxon#ClassRank>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Class is the third highest traditional taxon. E.g., in the case of humans the class is \"Mammalia\";."@en ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#Class\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Class"@en , "Classe"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern linneanTaxonomy:Class" ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#FamilyRank>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Family is the fifth highest traditional taxon. E.g., in the case of humans the family is \"Hominidae\"."@en ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#Family\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Family"@en , "Famille"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern linneanTaxonomy:Family"@en ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#LivingOrganism>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "In biology, an organism is any contiguous living system (such as animal, fungus, micro-organism, or plant). In at least some form, all types of organisms are capable of responding to stimuli, reproduction, growth and development, and maintenance of homeostasis as a stable whole.\nsource wikipedia"@en , "Un organisme  désigne, en biologie et en écologie, un système complexe évolutif formé d'organes qui interagissent de façon à fonctionner comme un ensemble stable.\nsource wikipedia"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Living Organism"@en , "Organisme vivant"@fr .
+
+<http://ontology.irstea.fr/AgronomicTaxon#OrderRank>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Order is the fourth highest traditional taxon. E.g., in the case of humans the phylum is \"Primates\"."@en ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#Order\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Order"@en , "Ordre"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                " Ontology Design Pattern linneanTaxonomy:Order"@en ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#PhylumRank>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Phylum is the second highest traditional taxon. E.g., in the case of humans the phylum is \"Chordata\"."@en ;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+                "\"http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#Phylum\"" ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Phylum"@en , "Division"@fr , "Embranchement"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#seeAlso>
+                "Ontology Design Pattern linneanTaxonomy:Phylum"@en ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+<http://ontology.irstea.fr/AgronomicTaxon#Taxonomy>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "Taxonomy is the academic discipline of defining groups of biological organisms on the basis of shared characteristics and giving names to those groups. Each group is given a rank and groups of a given rank can be aggregated to form a super group of higher rank and thus create a hierarchical classification. The groups created through this process are referred to as taxa (singular taxon). An example of a modern classification is the one published in 2009 by the Angiosperm Phylogeny Group for all living flowering plant families (the APG III system).\nfrom wikipedia"@en ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Taxonomy"@en , "Taxinomie"@fr , "Taxonomie"@fr ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+
+<urn:swrl#o>  a  <http://www.w3.org/2003/11/swrl#Variable> .
+
+<urn:swrl#s>  a  <http://www.w3.org/2003/11/swrl#Variable> .
+
+<urn:swrl#label>  a  <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#Taxonomy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "AGROVOC agronomic classification" .
+
+<http://aims.fao.org/aos/agrovoc/c_7951>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "パンコムギ"@ja , "普通小麦"@zh , "Triticum aestivum"@th , "Triticum aestivum"@es , "Triticum aestivum"@tr , "TRITICUM AESTIVUM"@de , "تریتیکوم استیووم"@fa , "Triticum aestivum"@pt , "Triticum aestivum"@hu , "Triticum aestivum"@cs , "Triticum aestivum"@pl , "Triticum aestivum"@it , "Triticum aestivum"@sk , "Triticum aestivum"@fr , "밀"@ko , "قمح صيفي"@ar , "Triticum aestivum"@ru , "Triticum aestivum"@lo , "ट्रिटीकम् एस्टीवम"@hi , "Triticum aestivum"@en , "보통계밀"@ko , "Triticum vulgare"@it , "コーン"@ja , "pšenica siata"@sk , "Vicia sativa"@sk , "Blé ordinaire"@fr , "Triticum vulgare"@sk , "Triticum sativum"@ru , "Triticum vulgare"@tr , "Triticum sativum"@fr , "Triticum vulgare"@ru , "Adi buğday"@tr , "تريتيكوم ساتیوم"@fa , "Triticum sativum"@tr , "Corn (triticum)"@en , "Triticum vulgare"@pt , "Triticum vulgare"@hu , "búza"@hu , "گندم معمولي"@fa , "Triticum sativum"@en , "تريتيكوم ولگار"@fa , "五谷"@zh , "साधारण गेहूँ"@hi , "triticum vulgare"@cs , "TRITICUM SATIVUM"@de , "ข้าวโพด (triticum)"@th , "пшеница мягкая"@ru , "Triticum sativum"@sk , "Blé tendre (triticum aestivum)"@fr , "밀(학명)"@ko , "ट्रिटीकम् वल्गेयर"@hi , "triticum sativum"@cs , "Grano comune"@it , "Triticum sativum"@pt , "common wheat"@en , "зерно мягкой пшеницы"@ru , "قمح مزروع"@ar , "közönséges búza"@hu , "Trigo blando"@es , "pšenice setá"@cs , "TRITICUM VULGARE"@de , "Pszenica zwyczajna"@pl , "Triticum vulgare"@en , "अनाज (ट्रिटिकम)"@hi , "Trigo candeal (triticum aestivum)"@es , "pšenice obecná"@cs , "普通コムギ"@ja , "ट्रिटीकम् सटाइवम"@hi , "Triticum sativum"@hu , "Trigo comum"@pt , "Triticum vulgare"@pl , "Triticum sativum"@pl , "Triticum vulgare"@es , "Triticum vulgare"@th , "Triticum sativum"@es , "Triticum vulgare"@fr , "قمح شائع"@ar , "Triticum sativum"@th , "Triticum sativum"@it ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7950> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "パンコムギ"@ja , "普通小麦"@zh , "Triticum aestivum"@th , "Triticum aestivum"@es , "Triticum aestivum"@tr , "TRITICUM AESTIVUM"@de , "تریتیکوم استیووم"@fa , "Triticum aestivum"@pt , "Triticum aestivum"@hu , "Triticum aestivum"@cs , "Triticum aestivum"@pl , "Triticum aestivum"@it , "Triticum aestivum"@sk , "Triticum aestivum"@fr , "밀"@ko , "قمح صيفي"@ar , "Triticum aestivum"@ru , "Triticum aestivum"@lo , "ट्रिटीकम् एस्टीवम"@hi , "Triticum aestivum"@en ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "보통계밀"@ko , "Triticum vulgare"@it , "コーン"@ja , "pšenica siata"@sk , "Vicia sativa"@sk , "Blé ordinaire"@fr , "Triticum vulgare"@sk , "Triticum sativum"@ru , "Triticum vulgare"@tr , "Triticum sativum"@fr , "Triticum vulgare"@ru , "Adi buğday"@tr , "تريتيكوم ساتیوم"@fa , "Triticum sativum"@tr , "Corn (triticum)"@en , "Triticum vulgare"@pt , "Triticum vulgare"@hu , "búza"@hu , "گندم معمولي"@fa , "Triticum sativum"@en , "تريتيكوم ولگار"@fa , "五谷"@zh , "साधारण गेहूँ"@hi , "triticum vulgare"@cs , "TRITICUM SATIVUM"@de , "ข้าวโพด (triticum)"@th , "пшеница мягкая"@ru , "Triticum sativum"@sk , "Blé tendre (triticum aestivum)"@fr , "밀(학명)"@ko , "ट्रिटीकम् वल्गेयर"@hi , "triticum sativum"@cs , "Grano comune"@it , "Triticum sativum"@pt , "common wheat"@en , "зерно мягкой пшеницы"@ru , "قمح مزروع"@ar , "közönséges búza"@hu , "Trigo blando"@es , "pšenice setá"@cs , "TRITICUM VULGARE"@de , "Pszenica zwyczajna"@pl , "Triticum vulgare"@en , "अनाज (ट्रिटिकम)"@hi , "Trigo candeal (triticum aestivum)"@es , "pšenice obecná"@cs , "普通コムギ"@ja , "ट्रिटीकम् सटाइवम"@hi , "Triticum sativum"@hu , "Trigo comum"@pt , "Triticum vulgare"@pl , "Triticum sativum"@pl , "Triticum vulgare"@es , "Triticum vulgare"@th , "Triticum sativum"@es , "Triticum vulgare"@fr , "قمح شائع"@ar , "Triticum sativum"@th , "Triticum sativum"@it ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_7950>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#GenusRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Triticum"@lo , "TRITICUM"@de , "Triticum"@cs , "ट्रिटीकम / गेहूँ"@hi , "Triticum"@sk , "Triticum"@es , "小麦属"@zh , "Triticum"@pt , "Triticum"@th , "트리티컴속"@ko , "Triticum"@hu , "Triticum"@ru , "Triticum"@en , "コムギ属"@ja , "قمح"@ar , "Triticum"@tr , "تریتیکوم"@fa , "Triticum"@fr , "Triticum"@it , "Triticum"@pl , "Pszenica"@pl , "جنس گندم"@fa ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_3354> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Triticum"@lo , "TRITICUM"@de , "Triticum"@cs , "ट्रिटीकम / गेहूँ"@hi , "Triticum"@sk , "Triticum"@es , "小麦属"@zh , "Triticum"@pt , "Triticum"@th , "트리티컴속"@ko , "Triticum"@hu , "Triticum"@ru , "Triticum"@en , "コムギ属"@ja , "قمح"@ar , "Triticum"@tr , "تریتیکوم"@fa , "Triticum"@fr , "Triticum"@it , "Triticum"@pl ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Pszenica"@pl , "جنس گندم"@fa ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_7956>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Triticum monococcum"@it , "Triticum monococcum"@ru , "Triticum monococcum"@lo , "تریتیکوم مونوکوکوم"@fa , "Triticum monococcum"@tr , "Triticum monococcum"@sk , "TRITICUM MONOCOCCUM"@de , "Triticum monococcum"@es , "单粒小麦"@zh , "Triticum monococcum"@cs , "Triticum monococcum"@pt , "ट्रिटीकम् मोनोकोकम्"@hi , "Triticum monococcum"@en , "Triticum monococcum"@pl , "Triticum monococcum"@th , "一粒コムギ"@ja , "Triticum monococcum"@hu , "قمح وحيد الحبة"@ar , "Triticum monococcum"@fr , "इनकार्न"@hi , "گندم تک‌دانه‌ای"@fa , "Farro piccolo"@it , "Yabani kaplıca buğdayı"@tr , "一粒小麦"@zh , "Engrain"@fr , "ఇన్   కార్న్"@te , "Trigo de un grano"@es , "Einkorn"@tr , "アインコルン"@ja , "Kaplıca buğdayı"@tr , "pšenica jednozrnná"@sk , "alakor"@hu , "گندم يكدانه"@fa , "Escanda menor"@es , "Trigo de uma semente"@pt , "EINKORN"@de , "Pszenica samopsza"@pl , "pšenice jednozrnka"@cs , "Einkorn"@en , "Esprilla"@es , "пшеница однозернянка"@ru ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7950> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Triticum monococcum"@it , "Triticum monococcum"@ru , "Triticum monococcum"@lo , "تریتیکوم مونوکوکوم"@fa , "Triticum monococcum"@tr , "Triticum monococcum"@sk , "TRITICUM MONOCOCCUM"@de , "Triticum monococcum"@es , "单粒小麦"@zh , "Triticum monococcum"@cs , "Triticum monococcum"@pt , "ट्रिटीकम् मोनोकोकम्"@hi , "Triticum monococcum"@en , "Triticum monococcum"@pl , "Triticum monococcum"@th , "一粒コムギ"@ja , "Triticum monococcum"@hu , "قمح وحيد الحبة"@ar , "Triticum monococcum"@fr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "इनकार्न"@hi , "گندم تک‌دانه‌ای"@fa , "Farro piccolo"@it , "Yabani kaplıca buğdayı"@tr , "一粒小麦"@zh , "Engrain"@fr , "ఇన్   కార్న్"@te , "Trigo de un grano"@es , "Einkorn"@tr , "アインコルン"@ja , "Kaplıca buğdayı"@tr , "pšenica jednozrnná"@sk , "alakor"@hu , "گندم يكدانه"@fa , "Escanda menor"@es , "Trigo de uma semente"@pt , "EINKORN"@de , "Pszenica samopsza"@pl , "pšenice jednozrnka"@cs , "Einkorn"@en , "Esprilla"@es , "пшеница однозернянка"@ru ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_7952>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Triticum boeoticum"@pl , "قمح بويتي"@ar , "ट्रिटीकम् बोइयोटिकम"@hi , "Triticum boeoticum"@fr , "تریتیکوم بئوتیکوم"@fa , "Triticum boeoticum"@sk , "Triticum boeoticum"@en , "Triticum boeoticum"@cs , "波埃奥梯小麦"@zh , "野生一粒系小麦"@ja , "Triticum boeoticum"@lo , "Triticum boeoticum"@pt , "Triticum boeoticum"@th , "Triticum boeoticum"@it , "Triticum boeoticum"@es , "Triticum boeoticum"@hu , "Triticum boeoticum"@ru , "TRITICUM BOEOTICUM"@de , "Triticum boeoticum"@tr , "گندم یونانی"@fa , "однозернянка дикая беотийская"@ru ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7950> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Triticum boeoticum"@pl , "قمح بويتي"@ar , "ट्रिटीकम् बोइयोटिकम"@hi , "Triticum boeoticum"@fr , "تریتیکوم بئوتیکوم"@fa , "Triticum boeoticum"@sk , "Triticum boeoticum"@en , "Triticum boeoticum"@cs , "波埃奥梯小麦"@zh , "野生一粒系小麦"@ja , "Triticum boeoticum"@lo , "Triticum boeoticum"@pt , "Triticum boeoticum"@th , "Triticum boeoticum"@it , "Triticum boeoticum"@es , "Triticum boeoticum"@hu , "Triticum boeoticum"@ru , "TRITICUM BOEOTICUM"@de , "Triticum boeoticum"@tr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "گندم یونانی"@fa , "однозернянка дикая беотийская"@ru ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_7955>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Triticum durum"@tr , "Triticum durum"@pt , "Triticum durum"@sk , "デュラムコムギ"@ja , "Triticum durum"@it , "Triticum durum"@ru , "تریتیکوم دوروم"@fa , "Triticum durum"@es , "Triticum durum"@lo , "Triticum durum"@th , "ट्रिटीकम् ड्यूरम"@hi , "Triticum durum"@fr , "듀럼밀"@ko , "Triticum durum"@en , "Triticum durum"@pl , "Triticum durum"@hu , "Triticum durum"@cs , "قمح قاس"@ar , "硬粒小麦(植物)"@zh , "TRITICUM DURUM"@de , "Trigo moro"@es , "گندم الجزایری"@fa , "Trigo moruno"@es , "Trigo fanfarrón"@es , "Trigo de fideos"@es , "Trigo semolero"@es ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7950> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Triticum durum"@tr , "Triticum durum"@pt , "Triticum durum"@sk , "デュラムコムギ"@ja , "Triticum durum"@it , "Triticum durum"@ru , "تریتیکوم دوروم"@fa , "Triticum durum"@es , "Triticum durum"@lo , "Triticum durum"@th , "ट्रिटीकम् ड्यूरम"@hi , "Triticum durum"@fr , "듀럼밀"@ko , "Triticum durum"@en , "Triticum durum"@pl , "Triticum durum"@hu , "Triticum durum"@cs , "قمح قاس"@ar , "硬粒小麦(植物)"@zh , "TRITICUM DURUM"@de ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Trigo moro"@es , "گندم الجزایری"@fa , "Trigo moruno"@es , "Trigo fanfarrón"@es , "Trigo de fideos"@es , "Trigo semolero"@es ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_7958>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Triticum turgidum"@th , "Triticum turgidum"@pl , "잉글리쉬휘트"@ko , "Triticum turgidum"@hu , "تریتیکوم تورژیدوم"@fa , "ट्रिटीकम् टर्जिडम्"@hi , "Triticum turgidum"@it , "قمح سمين"@ar , "Triticum turgidum"@lo , "Triticum turgidum"@tr , "Triticum turgidum"@fr , "Triticum turgidum"@cs , "Triticum turgidum"@sk , "オリエントコムギ"@ja , "Triticum turgidum"@ru , "Triticum turgidum"@en , "Triticum turgidum"@pt , "肿胀小麦"@zh , "TRITICUM TURGIDUM"@de , "Triticum turgidum"@es , "Trigo remache"@es , "リベットコムギ"@ja , "English wheat"@en , "イギリスコムギ"@ja , "Pszenica szorstka"@pl , "Pszenica angielska"@pl , "Grano grosso"@it , "Farro medio"@it , "пшеница тучная"@ru , "pšenice naduřelá"@cs , "őszi tönke"@hu , "Blé poulard"@fr , "리베트휘트"@ko , "گندم انگليسي"@fa , "durum"@hu , "İngiliz buğdayı"@tr , "pšenice anglická"@cs , "Trigo redondillo"@es , "пшеница тургидум"@ru , "अंग्रेजी गेंहू"@hi , "कीलक गेंहूँ"@hi , "rivet wheat"@en , "Trigo poulard"@es , "圆柱小麦"@zh , "pšenica hrubozrnná"@sk , "ఇంగ్లీష్ వీట్"@te , "ENGLISCHER WEIZEN"@de , "Trigo túrgido"@pt , "пшеница английская"@ru , "Trigo candeal (triticum turgidum)"@es , "گندم نوک‌اردکی"@fa ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7950> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Triticum turgidum"@th , "Triticum turgidum"@pl , "잉글리쉬휘트"@ko , "Triticum turgidum"@hu , "تریتیکوم تورژیدوم"@fa , "ट्रिटीकम् टर्जिडम्"@hi , "Triticum turgidum"@it , "قمح سمين"@ar , "Triticum turgidum"@lo , "Triticum turgidum"@tr , "Triticum turgidum"@fr , "Triticum turgidum"@cs , "Triticum turgidum"@sk , "オリエントコムギ"@ja , "Triticum turgidum"@ru , "Triticum turgidum"@en , "Triticum turgidum"@pt , "肿胀小麦"@zh , "TRITICUM TURGIDUM"@de , "Triticum turgidum"@es ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Trigo remache"@es , "リベットコムギ"@ja , "English wheat"@en , "イギリスコムギ"@ja , "Pszenica szorstka"@pl , "Pszenica angielska"@pl , "Grano grosso"@it , "Farro medio"@it , "пшеница тучная"@ru , "pšenice naduřelá"@cs , "őszi tönke"@hu , "Blé poulard"@fr , "리베트휘트"@ko , "گندم انگليسي"@fa , "durum"@hu , "İngiliz buğdayı"@tr , "pšenice anglická"@cs , "Trigo redondillo"@es , "пшеница тургидум"@ru , "अंग्रेजी गेंहू"@hi , "कीलक गेंहूँ"@hi , "rivet wheat"@en , "Trigo poulard"@es , "圆柱小麦"@zh , "pšenica hrubozrnná"@sk , "ఇంగ్లీష్ వీట్"@te , "ENGLISCHER WEIZEN"@de , "Trigo túrgido"@pt , "пшеница английская"@ru , "Trigo candeal (triticum turgidum)"@es , "گندم نوک‌اردکی"@fa ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_7954>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "エンマーコムギ"@ja , "Triticum dicoccum"@hu , "قمح ثنائي الحبة"@ar , "Triticum dicoccum"@es , "双粒小麦"@zh , "Triticum dicoccum"@lo , "Triticum dicoccum"@th , "Triticum dicoccum"@en , "Triticum dicoccum"@pl , "Triticum dicoccum"@it , "Triticum dicoccum"@sk , "Triticum dicoccum"@pt , "Triticum dicoccum"@cs , "Triticum dicoccum"@tr , "TRITICUM DICOCCUM"@de , "Triticum dicoccum"@ru , "ट्रिटीकम् डाइकोकम्"@hi , "تریتیکوم دیکوکوم"@fa , "Triticum dicoccum"@fr , "Escanda almidonera"@es , "گندم دودانه (زراعي)"@fa , "tönke (termesztett)"@hu , "Emmer buğdayı (kültüre alınmış)"@tr , "Pszenica płaskurka (roślina uprawna)"@pl , "Trigo almidonero"@es , "EMMER (KULTIVIERT)"@de , "Trigo emmer"@pt , "گندم لری"@fa , "pšenica dvojzrnová"@sk , "Trigo emmer"@es , "pšenice dvojzrnka"@cs , "ఒక రకం గోధుమ"@te , "Emmer (cultivated)"@en , "Escanda de dos carreras"@es , "Farro (coltivato)"@it , "Escanda mayor"@es , "полба обыкновенная"@ru , "एमर (कृष्य)"@hi , "二粒小麦"@zh ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7950> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "エンマーコムギ"@ja , "Triticum dicoccum"@hu , "قمح ثنائي الحبة"@ar , "Triticum dicoccum"@es , "双粒小麦"@zh , "Triticum dicoccum"@lo , "Triticum dicoccum"@th , "Triticum dicoccum"@en , "Triticum dicoccum"@pl , "Triticum dicoccum"@it , "Triticum dicoccum"@sk , "Triticum dicoccum"@pt , "Triticum dicoccum"@cs , "Triticum dicoccum"@tr , "TRITICUM DICOCCUM"@de , "Triticum dicoccum"@ru , "ट्रिटीकम् डाइकोकम्"@hi , "تریتیکوم دیکوکوم"@fa , "Triticum dicoccum"@fr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Escanda almidonera"@es , "گندم دودانه (زراعي)"@fa , "tönke (termesztett)"@hu , "Emmer buğdayı (kültüre alınmış)"@tr , "Pszenica płaskurka (roślina uprawna)"@pl , "Trigo almidonero"@es , "EMMER (KULTIVIERT)"@de , "Trigo emmer"@pt , "گندم لری"@fa , "pšenica dvojzrnová"@sk , "Trigo emmer"@es , "pšenice dvojzrnka"@cs , "ఒక రకం గోధుమ"@te , "Emmer (cultivated)"@en , "Escanda de dos carreras"@es , "Farro (coltivato)"@it , "Escanda mayor"@es , "полба обыкновенная"@ru , "एमर (कृष्य)"@hi , "二粒小麦"@zh ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_7957>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Triticum spelta"@pt , "Triticum spelta"@it , "خندروس"@ar , "Triticum spelta"@sk , "Triticum spelta"@th , "تریتیکوم اسپلتا"@fa , "Triticum spelta"@ru , "ट्रिटीकम् स्पेल्टा"@hi , "Triticum spelta"@es , "TRITICUM SPELTA"@de , "斯佩尔特小麦"@zh , "Triticum spelta"@hu , "Triticum spelta"@cs , "Triticum spelta"@fr , "스펠타밀"@ko , "Triticum spelta"@en , "Triticum spelta"@tr , "スペルトコムギ"@ja , "Triticum spelta"@lo , "Triticum spelta"@pl , "Escana doble silvestre"@es , "спельта"@ru , "Épeautre"@fr , "Kızıl buğday"@tr , "گندم آلمانی"@fa , "Spelt"@en , "Kılçıksız buğday"@tr , "špalda"@cs , "pšenica špaldová"@sk , "Orkisz"@pl , "SPELZ"@de , "Trigo espelta"@pt , "tönköly"@hu , "Spelta"@it , "स्पेल्ट"@hi , "كندروس"@fa , "Pszenica orkisz"@pl , "گندم شهر کردی"@fa , "Espelta"@es ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7950> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Triticum spelta"@pt , "Triticum spelta"@it , "خندروس"@ar , "Triticum spelta"@sk , "Triticum spelta"@th , "تریتیکوم اسپلتا"@fa , "Triticum spelta"@ru , "ट्रिटीकम् स्पेल्टा"@hi , "Triticum spelta"@es , "TRITICUM SPELTA"@de , "斯佩尔特小麦"@zh , "Triticum spelta"@hu , "Triticum spelta"@cs , "Triticum spelta"@fr , "스펠타밀"@ko , "Triticum spelta"@en , "Triticum spelta"@tr , "スペルトコムギ"@ja , "Triticum spelta"@lo , "Triticum spelta"@pl ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Escana doble silvestre"@es , "спельта"@ru , "Épeautre"@fr , "Kızıl buğday"@tr , "گندم آلمانی"@fa , "Spelt"@en , "Kılçıksız buğday"@tr , "špalda"@cs , "pšenica špaldová"@sk , "Orkisz"@pl , "SPELZ"@de , "Trigo espelta"@pt , "tönköly"@hu , "Spelta"@it , "स्पेल्ट"@hi , "كندروس"@fa , "Pszenica orkisz"@pl , "گندم شهر کردی"@fa , "Espelta"@es ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_7953>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "エンマーコムギ"@ja , "Triticum dicoccoides"@ru , "パレスチナコムギ"@ja , "ट्रिटीकम् डाइकोक्वायड्स"@hi , "Triticum dicoccoides"@lo , "Triticum dicoccoides"@es , "Triticum dicoccoides"@pl , "Triticum dicoccoides"@tr , "Triticum dicoccoides"@pt , "تریتیکوم دیکوکوییدس"@fa , "Triticum dicoccoides"@en , "TRITICUM DICOCCOIDES"@de , "Triticum dicoccoides"@hu , "Triticum dicoccoides"@sk , "野生二粒小麦"@zh , "قمح ثنائي"@ar , "Triticum dicoccoides"@cs , "Triticum dicoccoides"@fr , "Triticum dicoccoides"@th , "Triticum dicoccoides"@it , "tönke (vad)"@hu , "گندم دودانه (وحشي)"@fa , "野小麦"@zh , "pšenice dvojzrnná"@cs , "एमर (जंगली)"@hi , "Emmer buğdayı (yabani)"@tr , "полба дикая"@ru , "EMMER (WILD)"@de , "Trigo almidonero salvaje"@es , "Emmer (wild)"@en , "ఒక రకం అడవి గోధుమ"@te , "Amidonnier sauvage"@fr , "pšenica dvojzrnovitá"@sk , "Farro (spontaneo)"@it , "Pszenica płaskurka (roślina dzika)"@pl ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7950> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Triticum dicoccoides"@ru , "パレスチナコムギ"@ja , "ट्रिटीकम् डाइकोक्वायड्स"@hi , "Triticum dicoccoides"@lo , "Triticum dicoccoides"@es , "Triticum dicoccoides"@pl , "Triticum dicoccoides"@tr , "Triticum dicoccoides"@pt , "تریتیکوم دیکوکوییدس"@fa , "Triticum dicoccoides"@en , "TRITICUM DICOCCOIDES"@de , "Triticum dicoccoides"@hu , "Triticum dicoccoides"@sk , "野生二粒小麦"@zh , "قمح ثنائي"@ar , "Triticum dicoccoides"@cs , "Triticum dicoccoides"@fr , "Triticum dicoccoides"@th , "Triticum dicoccoides"@it ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "エンマーコムギ"@ja , "tönke (vad)"@hu , "گندم دودانه (وحشي)"@fa , "野小麦"@zh , "pšenice dvojzrnná"@cs , "एमर (जंगली)"@hi , "Emmer buğdayı (yabani)"@tr , "полба дикая"@ru , "EMMER (WILD)"@de , "Trigo almidonero salvaje"@es , "Emmer (wild)"@en , "ఒక రకం అడవి గోధుమ"@te , "Amidonnier sauvage"@fr , "pšenica dvojzrnovitá"@sk , "Farro (spontaneo)"@it , "Pszenica płaskurka (roślina dzika)"@pl ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_7337>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#Taxon> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "яровая пшеница"@ru , "pšenica jarná"@sk , "jarní pšenice"@cs , "춘파소맥"@ko , "گندم بهاره"@fa , "Spring wheat"@en , "Trigo de primavera"@es , "बसन्त गेहूँ"@hi , "tavaszi búza"@hu , "春播きコムギ"@ja , "Blé de printemps"@fr , "SOMMERWEIZEN"@de , "Trigo de primavera"@pt , "Frumento primaverile"@it , "Yazlık buğday"@tr , "Pszenica jara"@pl , "ข้าวสาลีฤดูใบไม้ผลิ"@th , "春小麦"@zh ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7950> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "яровая пшеница"@ru , "pšenica jarná"@sk , "jarní pšenice"@cs , "춘파소맥"@ko , "گندم بهاره"@fa , "Spring wheat"@en , "Trigo de primavera"@es , "बसन्त गेहूँ"@hi , "tavaszi búza"@hu , "春播きコムギ"@ja , "Blé de printemps"@fr , "SOMMERWEIZEN"@de , "Trigo de primavera"@pt , "Frumento primaverile"@it , "Yazlık buğday"@tr , "Pszenica jara"@pl , "ข้าวสาลีฤดูใบไม้ผลิ"@th , "春小麦"@zh ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_8412>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#Taxon> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "õszi búza"@hu , "Trigo de invierno"@es , "Frumento autunno-vernino"@it , "ข้าวสาลีที่ปลูกในฤดูใบไม้ร่วง"@th , "Winter wheat"@en , "گندم زمستانه"@fa , "Pszenica ozima"@pl , "Trigo de inverno"@pt , "WINTERWEIZEN"@de , "ozimá pšenice"@cs , "Blé d'hiver"@fr , "शीत गेंहूँ"@hi , "추파소맥"@ko , "ozimná pšenica"@sk , "冬小麦"@zh , "Kışlık buğday"@tr , "秋播きコムギ"@ja , "озимая пшеница"@ru ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7950> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "õszi búza"@hu , "Trigo de invierno"@es , "Frumento autunno-vernino"@it , "ข้าวสาลีที่ปลูกในฤดูใบไม้ร่วง"@th , "Winter wheat"@en , "گندم زمستانه"@fa , "Pszenica ozima"@pl , "Trigo de inverno"@pt , "WINTERWEIZEN"@de , "ozimá pšenice"@cs , "Blé d'hiver"@fr , "शीत गेंहूँ"@hi , "추파소맥"@ko , "ozimná pšenica"@sk , "冬小麦"@zh , "Kışlık buğday"@tr , "秋播きコムギ"@ja , "озимая пшеница"@ru ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_3354>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#Taxon> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Poaceae"@lo , "الفصيلة القبئية"@ar , "Poaceae"@th , "Poaceae"@it , "벼과"@ko , "POACEAE"@de , "Poaceae"@es , "Poaceae"@fr , "Gramineae"@cs , "Poaceae"@tr , "poaceae"@zh , "Gramineae"@sk , "چمنیان"@fa , "Poaceae"@en , "Poaceae"@hu , "Poaceae"@pl , "Poaceae"@pt , "イネ科"@ja , "Poaceae"@ru , "पोयेसी"@hi , "マコモ属"@ja , "پانيكاسه"@fa , "Festucaceae"@it , "Andropogonaceae"@cs , "Lepturaceae"@pt , "Festucaceae"@sk , "Tripsaceae"@pt , "Agrostidaceae"@pt , "Sporobolaceae"@fr , "فستوكاسه"@fa , "Arundinaceae"@tr , "Melinideae"@hu , "Poeae"@hu , "Lepturaceae"@pl , "Maydaceae"@pt , "Eragrosteae"@fr , "هوردئاسه"@fa , "アルンディナケアエ"@ja , "الفصيلة الأروندينلية"@ar , "マィダ科"@ja , "グラミネエ科"@ja , "Avenaceae"@fr , "アルンディネラケアエ"@ja , "Sporobolaceae"@sk , "واسيان"@fa , "アンドロポゴナケアエ"@ja , "HORDEACEAE"@de , "फेस्टुकेसी"@hi , "Graminae"@tr , "スズメノカタビラ亜科"@ja , "Avenaceae"@hu , "Avenaceae"@sk , "Arundinaceae"@cs , "Eragrostidaceae"@cs , "Festucaceae"@th , "الفصيلة الإيراغروستيسية"@ar , "Maydaceae"@tr , "Stipaceae"@th , "Festucaceae"@pt , "اوريزاسه"@fa , "آندروپوگوناسه"@fa , "Festucaceae"@lo , "Eragrostidaceae"@tr , "Andropogonaceae"@pl , "Graminae"@en , "كلوريداسه"@fa , "Avenaceae"@en , "Trawy"@pl , "Maydaceae"@es , "TRIPSACEAE"@de , "AGROSTIDACEAE"@de , "Tripsaceae"@ru , "Andropogonaceae"@sk , "Graminae"@hu , "آگروستيداسه"@fa , "Andropogonaceae"@hu , "Hordeaceae"@it , "Bambusaceae"@fr , "Eragrosteae"@sk , "Lepturaceae"@en , "パニカム科"@ja , "Agrostidaceae"@lo , "Sporobolaceae"@tr , "Hordeaceae"@fr , "グラミナエ科"@ja , "Gramineae"@fr , "Sporobolaceae"@it , "एरूनडीनेसी"@hi , "Panicaceae"@cs , "पोएई"@hi , "Poeae"@it , "تیره چمن گره‌ریش"@fa , "Arundinellaceae"@th , "मेलीनिडी"@hi , "पेनीकेसी"@hi , "BAMBUSACEAE"@de , "Eragrostidaceae"@sk , "Chloridaceae"@ru , "Zizanieae"@pl , "Festucaceae"@tr , "Arundinellaceae"@en , "Arundinaceae"@pl , "Avenaceae"@tr , "इरैग्रोस्टी"@hi , "Oryzaceae"@cs , "Phalaridaceae"@es , "Eragrostidaceae"@pl , "Chloridaceae"@pt , "Eragrosteae"@cs , "Arundinaceae"@th , "Oryzaceae"@ru , "Melinideae"@pt , "الفصيلة الميدية"@ar , "Melinideae"@th , "Gramineae"@es , "Bambusaceae"@sk , "Zizanieae"@tr , "شوفانيات"@ar , "Arundinaceae"@es , "Tripsaceae"@es , "アウェナケアエ科"@ja , "Sporobolaceae"@pl , "Melinideae"@pl , "آرونديناسه"@fa , "Arundinellaceae"@pt , "Avenaceae"@cs , "Festucaceae"@cs , "Arundinaceae"@en , "اسپوروبولاسه"@fa , "أندروبوغونيات"@ar , "Bambusaceae"@es , "एण्ड्रोपोगोनैसी"@hi , "Eragrostidaceae"@it , "Poeae"@en , "Lepturaceae"@hu , "Bambusaceae"@pt , "Arundinellaceae"@ru , "مايداسه"@fa , "Arundinellaceae"@es , "Andropogonaceae"@ru , "Arundinellaceae"@fr , "Phalaridaceae"@hu , "Panicaceae"@hu , "Tripsaceae"@sk , "اراگروستيداسه"@fa , "タケ科"@ja , "Melinideae"@es , "レプトゥラ科"@ja , "हाँर्डीएसी"@hi , "Poeae"@pt , "Oryzaceae"@pl , "Graminae"@ru , "Phalaridaceae"@fr , "Stipaceae"@hu , "استيپاسه"@fa , "Agrostidaceae"@pl , "जिजेनिई"@hi , "Oryzaceae"@pt , "Andropogonaceae"@lo , "Avenaceae"@pt , "Gramineae"@pt , "Arundinaceae"@lo , "Zizanieae"@hu , "Poeas"@es , "लेप्टुरेसी"@hi , "ओराइजेसी"@hi , "Oryzaceae"@sk , "Phalaridaceae"@sk , "スズメガヤ亜科"@ja , "Bambusaceae"@hu , "Maydaceae"@fr , "Festucaceae"@es , "پوآسه"@fa , "SPOROBOLACEAE"@de , "Sporobolaceae"@th , "Arundinaceae"@pt , "نجيليات (فصيلة)"@ar , "Andropogonaceae"@th , "Sporobolaceae"@hu , "Lepturaceae"@ru , "Festucaceae"@en , "Eragrosteae"@it , "スティパ科"@ja , "Melinideae"@sk , "Avenaceae"@it , "एवीनेसी"@hi , "Poaceae"@cs , "Arundinaceae"@it , "Stipaceae"@en , "Bambusaceae"@it , "Avenaceae"@th , "Avenaceae"@es , "Melinideae"@fr , "Andropogonaceae"@pt , "panicaceae"@sk , "Panicaceae"@tr , "Panicaceae"@th , "Arundinellaceae"@it , "Hordeaceae"@tr , "Arundinellaceae"@lo , "Oryzaceae"@es , "Bambusaceae"@lo , "Arundinaceae"@hu , "Hordeaceae"@hu , "CHLORIDACEAE"@de , "Phalaridaceae"@pt , "Chloridaceae"@fr , "Lepturaceae"@sk , "Zizanieae"@cs , "Tripsaceae"@it , "Phalaridaceae"@pl , "Festucaceae"@ru , "Bambusaceae"@ru , "AVENACEAE"@de , "ERAGROSTEAE"@de , "Bambusaceae"@pl , "Avenaceae"@pl , "Poeae"@fr , "Arundinellaceae"@tr , "Panicaceae"@pt , "क्लोरीडेसी"@hi , "Oryzaceae"@it , "Eragrostidaceae"@pt , "Tripsaceae"@fr , "Oryzaceae"@en , "Plewowce"@pl , "Poaceas"@es , "Phalaridaceae"@th , "Maydaceae"@en , "POEAE"@de , "Agrostidaceae"@ru , "Arundinellaceae"@cs , "ग्रैमिनी"@hi , "Oryzaceae"@fr , "Hordeaceae"@ru , "Lepturaceae"@tr , "Lepturaceae"@it , "Gramineae"@it , "Hordeaceae"@lo , "एग्रोस्टीडेसी"@hi , "لپتوراسه"@fa , "ホルデア科"@ja , "Stipaceae"@es , "Sporobolaceae"@pt , "ERAGROSTIDACEAE"@de , "Poeae"@cs , "تريپساكوم فاسيكولاتوم"@fa , "Poeae"@es , "Chloridaceae"@th , "स्टिपेसी"@hi , "スポロボラ科"@ja , "オリザ科"@ja , "Andropogonaceae"@en , "Poeae"@pl , "Hordeaceae"@th , "Hordeaceae"@es , "Hordeaceae"@cs , "アグロステダケアエ"@ja , "Tripsaceae"@en , "Bambusaceae"@tr , "بامبوساسه"@fa , "أغروستيسيات"@ar , "クロリダケエ科"@ja , "زيزانيات"@ar , "Melinideae"@en , "Agrostidaceae"@tr , "Sporobolaceae"@cs , "Eragrosteae"@ru , "Festucaceae"@hu , "Eragrosteae"@th , "PANICACEAE"@de , "فالاريداسه"@fa , "ファラリダ科"@ja , "Lepturaceae"@cs , "エラグロスティダ科"@ja , "Panicaceae"@en , "Zizanieae"@it , "Poaceae"@sk , "آروندينلاسه"@fa , "ملينيدئائه"@fa , "Zizanieae"@fr , "الفصيلة الإسبوروبولية"@ar , "बैम्बूसासी"@hi , "ANDROPOGONACEAE"@de , "Bambusaceae"@cs , "Eragrostidaceae"@en , "Eragrostidaceae"@es , "Maydaceae"@cs , "Bambusaceae"@en , "FESTUCACEAE"@de , "Chloridaceae"@lo , "Gramineae"@th , "Agrostidaceae"@fr , "Poeae"@tr , "Sporobolaceae"@en , "Zizanieae"@es , "Maydaceae"@th , "フィストゥカ科"@ja , "Lepturaceae"@lo , "Gramineae"@en , "Tripsaceae"@hu , "الفصيلة الفستوكية"@ar , "قصبيات"@ar , "Poeae"@sk , "خيزرانيات"@ar , "Stipaceae"@fr , "STIPACEAE"@de , "キビ亜科"@ja , "Zizanieae"@pt , "Eragrosteae"@tr , "Chloridaceae"@it , "Lepturaceae"@fr , "Tripsaceae"@tr , "Arundinaceae"@fr , "Hordeaceae"@pt , "Eragrostidaceae"@hu , "MELINIDEAE"@de , "Maydaceae"@sk , "Gramineae"@ru , "禾本科"@zh , "Eragrosteae"@pt , "Hordeaceae"@pl , "Stipaceae"@cs , "Eragrostidaceae"@th , "Agrostidaceae"@en , "Festucaceae"@fr , "Sporobolaceae"@es , "Chloridaceae"@sk , "GRAMINEAE"@de , "Zizanieae"@sk , "Eragrosteae"@es , "اراگروستئائه"@fa , "Zizanieae"@ru , "Chloridaceae"@cs , "इरैग्रोस्टीडेसी"@hi , "Festucaceae"@pl , "Panicaceae"@es , "Eragrostidaceae"@fr , "Melinideae"@ru , "Stipaceae"@tr , "Arundinellaceae"@hu , "Wiechlinowate"@pl , "Zizanieae"@en , "ट्रिपसेसी"@hi , "Avenaceae"@ru , "Buğdaygiller"@tr , "الفصيلة الحلفائية"@ar , "ZIZANIEAE"@de , "Gramineae"@pl , "Melinideae"@it , "Tripsaceae"@cs , "آوناسه"@fa , "LEPTURACEAE"@de , "Bambusaceae"@th , "Chloridaceae"@en , "MAYDACEAE"@de , "Phalaridaceae"@cs , "Graminae"@th , "Arundinaceae"@ru , "Maydaceae"@pl , "Melinideae"@tr , "Agrostidaceae"@hu , "Graminae"@sk , "Panicaceae"@fr , "Andropogonaceae"@es , "Maydaceae"@hu , "الفصيلة الفالاريسية"@ar , "شعيريات"@ar , "Phalaridaceae"@tr , "Stipaceae"@pl , "Lepturaceae"@th , "Eragrosteae"@hu , "Panicaceae"@it , "मेयडेसी (कुल)"@hi , "Zizanieae"@th , "Chloridaceae"@hu , "Eragrosteae"@pl , "Avenaceae"@lo , "الفصيلة الليبتورية"@ar , "Arundinellaceae"@pl , "Maydaceae"@ru , "Stipaceae"@sk , "Maydaceae"@it , "ARUNDINACEAE"@de , "स्पोरोबोलेसी"@hi , "Eragrostidaceae"@ru , "ガマグラス族"@ja , "الفصيلة الدٌخنية"@ar , "Stipaceae"@ru , "Stipaceae"@pt , "Sporobolaceae"@ru , "Phalaridaceae"@en , "Hordeaceae"@sk , "Poeae"@ru , "Graminae"@cs , "Andropogonaceae"@fr , "PHALARIDACEAE"@de , "Eragrosteae"@lo , "ARUNDINELLACEAE"@de , "Agrostidaceae"@cs , "Agrostidaceae"@th , "Phalaridaceae"@it , "الفصيلة الرزية"@ar , "Chloridaceae"@tr , "Panicaceae"@ru , "arundinaceae"@sk , "Hordeaceae"@en , "agrostidaceae"@sk , "ORYZACEAE"@de , "arundinellaceae"@sk , "زيزانيائه"@fa , "Phalaridaceae"@ru , "Chloridaceae"@es , "Tripsaceae"@pl , "Eragrosteae"@en , "Agrostidaceae"@it , "Andropogonaceae"@it , "Oryzaceae"@tr , "Panicaceae"@pl , "Tripsaceae"@th , "एरून्डीनेलासी"@hi , "Oryzaceae"@hu , "Agrostidaceae"@es , "Andropogonaceae"@tr , "Oryzaceae"@th , "ग्रैमीनी"@hi , "Melinideae"@cs , "Stipaceae"@it , "Lepturaceae"@es , "گندميان"@fa , "Gramineae"@tr , "Eragrostidaceae"@lo , "Gramineae"@hu , "Poeae"@th , "Chloridaceae"@pl , "फैलेरिडेसी"@hi ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_330269> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Poaceae"@lo , "الفصيلة القبئية"@ar , "Poaceae"@th , "Poaceae"@it , "벼과"@ko , "POACEAE"@de , "Poaceae"@es , "Poaceae"@fr , "Gramineae"@cs , "Poaceae"@tr , "poaceae"@zh , "Gramineae"@sk , "چمنیان"@fa , "Poaceae"@en , "Poaceae"@hu , "Poaceae"@pl , "Poaceae"@pt , "イネ科"@ja , "Poaceae"@ru , "पोयेसी"@hi ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "マコモ属"@ja , "پانيكاسه"@fa , "Festucaceae"@it , "Andropogonaceae"@cs , "Lepturaceae"@pt , "Festucaceae"@sk , "Tripsaceae"@pt , "Agrostidaceae"@pt , "Sporobolaceae"@fr , "فستوكاسه"@fa , "Arundinaceae"@tr , "Melinideae"@hu , "Poeae"@hu , "Lepturaceae"@pl , "Maydaceae"@pt , "Eragrosteae"@fr , "هوردئاسه"@fa , "アルンディナケアエ"@ja , "الفصيلة الأروندينلية"@ar , "マィダ科"@ja , "グラミネエ科"@ja , "Avenaceae"@fr , "アルンディネラケアエ"@ja , "Sporobolaceae"@sk , "واسيان"@fa , "アンドロポゴナケアエ"@ja , "HORDEACEAE"@de , "फेस्टुकेसी"@hi , "Graminae"@tr , "スズメノカタビラ亜科"@ja , "Avenaceae"@hu , "Avenaceae"@sk , "Arundinaceae"@cs , "Eragrostidaceae"@cs , "Festucaceae"@th , "الفصيلة الإيراغروستيسية"@ar , "Maydaceae"@tr , "Stipaceae"@th , "Festucaceae"@pt , "اوريزاسه"@fa , "آندروپوگوناسه"@fa , "Festucaceae"@lo , "Eragrostidaceae"@tr , "Andropogonaceae"@pl , "Graminae"@en , "كلوريداسه"@fa , "Avenaceae"@en , "Trawy"@pl , "Maydaceae"@es , "TRIPSACEAE"@de , "AGROSTIDACEAE"@de , "Tripsaceae"@ru , "Andropogonaceae"@sk , "Graminae"@hu , "آگروستيداسه"@fa , "Andropogonaceae"@hu , "Hordeaceae"@it , "Bambusaceae"@fr , "Eragrosteae"@sk , "Lepturaceae"@en , "パニカム科"@ja , "Agrostidaceae"@lo , "Sporobolaceae"@tr , "Hordeaceae"@fr , "グラミナエ科"@ja , "Gramineae"@fr , "Sporobolaceae"@it , "एरूनडीनेसी"@hi , "Panicaceae"@cs , "पोएई"@hi , "Poeae"@it , "تیره چمن گره‌ریش"@fa , "Arundinellaceae"@th , "मेलीनिडी"@hi , "पेनीकेसी"@hi , "BAMBUSACEAE"@de , "Eragrostidaceae"@sk , "Chloridaceae"@ru , "Zizanieae"@pl , "Festucaceae"@tr , "Arundinellaceae"@en , "Arundinaceae"@pl , "Avenaceae"@tr , "इरैग्रोस्टी"@hi , "Oryzaceae"@cs , "Phalaridaceae"@es , "Eragrostidaceae"@pl , "Chloridaceae"@pt , "Eragrosteae"@cs , "Arundinaceae"@th , "Oryzaceae"@ru , "Melinideae"@pt , "الفصيلة الميدية"@ar , "Melinideae"@th , "Gramineae"@es , "Bambusaceae"@sk , "Zizanieae"@tr , "شوفانيات"@ar , "Arundinaceae"@es , "Tripsaceae"@es , "アウェナケアエ科"@ja , "Sporobolaceae"@pl , "Melinideae"@pl , "آرونديناسه"@fa , "Arundinellaceae"@pt , "Avenaceae"@cs , "Festucaceae"@cs , "Arundinaceae"@en , "اسپوروبولاسه"@fa , "أندروبوغونيات"@ar , "Bambusaceae"@es , "एण्ड्रोपोगोनैसी"@hi , "Eragrostidaceae"@it , "Poeae"@en , "Lepturaceae"@hu , "Bambusaceae"@pt , "Arundinellaceae"@ru , "مايداسه"@fa , "Arundinellaceae"@es , "Andropogonaceae"@ru , "Arundinellaceae"@fr , "Phalaridaceae"@hu , "Panicaceae"@hu , "Tripsaceae"@sk , "اراگروستيداسه"@fa , "タケ科"@ja , "Melinideae"@es , "レプトゥラ科"@ja , "हाँर्डीएसी"@hi , "Poeae"@pt , "Oryzaceae"@pl , "Graminae"@ru , "Phalaridaceae"@fr , "Stipaceae"@hu , "استيپاسه"@fa , "Agrostidaceae"@pl , "जिजेनिई"@hi , "Oryzaceae"@pt , "Andropogonaceae"@lo , "Avenaceae"@pt , "Gramineae"@pt , "Arundinaceae"@lo , "Zizanieae"@hu , "Poeas"@es , "लेप्टुरेसी"@hi , "ओराइजेसी"@hi , "Oryzaceae"@sk , "Phalaridaceae"@sk , "スズメガヤ亜科"@ja , "Bambusaceae"@hu , "Maydaceae"@fr , "Festucaceae"@es , "پوآسه"@fa , "SPOROBOLACEAE"@de , "Sporobolaceae"@th , "Arundinaceae"@pt , "نجيليات (فصيلة)"@ar , "Andropogonaceae"@th , "Sporobolaceae"@hu , "Lepturaceae"@ru , "Festucaceae"@en , "Eragrosteae"@it , "スティパ科"@ja , "Melinideae"@sk , "Avenaceae"@it , "एवीनेसी"@hi , "Poaceae"@cs , "Arundinaceae"@it , "Stipaceae"@en , "Bambusaceae"@it , "Avenaceae"@th , "Avenaceae"@es , "Melinideae"@fr , "Andropogonaceae"@pt , "panicaceae"@sk , "Panicaceae"@tr , "Panicaceae"@th , "Arundinellaceae"@it , "Hordeaceae"@tr , "Arundinellaceae"@lo , "Oryzaceae"@es , "Bambusaceae"@lo , "Arundinaceae"@hu , "Hordeaceae"@hu , "CHLORIDACEAE"@de , "Phalaridaceae"@pt , "Chloridaceae"@fr , "Lepturaceae"@sk , "Zizanieae"@cs , "Tripsaceae"@it , "Phalaridaceae"@pl , "Festucaceae"@ru , "Bambusaceae"@ru , "AVENACEAE"@de , "ERAGROSTEAE"@de , "Bambusaceae"@pl , "Avenaceae"@pl , "Poeae"@fr , "Arundinellaceae"@tr , "Panicaceae"@pt , "क्लोरीडेसी"@hi , "Oryzaceae"@it , "Eragrostidaceae"@pt , "Tripsaceae"@fr , "Oryzaceae"@en , "Plewowce"@pl , "Poaceas"@es , "Phalaridaceae"@th , "Maydaceae"@en , "POEAE"@de , "Agrostidaceae"@ru , "Arundinellaceae"@cs , "ग्रैमिनी"@hi , "Oryzaceae"@fr , "Hordeaceae"@ru , "Lepturaceae"@tr , "Lepturaceae"@it , "Gramineae"@it , "Hordeaceae"@lo , "एग्रोस्टीडेसी"@hi , "لپتوراسه"@fa , "ホルデア科"@ja , "Stipaceae"@es , "Sporobolaceae"@pt , "ERAGROSTIDACEAE"@de , "Poeae"@cs , "تريپساكوم فاسيكولاتوم"@fa , "Poeae"@es , "Chloridaceae"@th , "स्टिपेसी"@hi , "スポロボラ科"@ja , "オリザ科"@ja , "Andropogonaceae"@en , "Poeae"@pl , "Hordeaceae"@th , "Hordeaceae"@es , "Hordeaceae"@cs , "アグロステダケアエ"@ja , "Tripsaceae"@en , "Bambusaceae"@tr , "بامبوساسه"@fa , "أغروستيسيات"@ar , "クロリダケエ科"@ja , "زيزانيات"@ar , "Melinideae"@en , "Agrostidaceae"@tr , "Sporobolaceae"@cs , "Eragrosteae"@ru , "Festucaceae"@hu , "Eragrosteae"@th , "PANICACEAE"@de , "فالاريداسه"@fa , "ファラリダ科"@ja , "Lepturaceae"@cs , "エラグロスティダ科"@ja , "Panicaceae"@en , "Zizanieae"@it , "Poaceae"@sk , "آروندينلاسه"@fa , "ملينيدئائه"@fa , "Zizanieae"@fr , "الفصيلة الإسبوروبولية"@ar , "बैम्बूसासी"@hi , "ANDROPOGONACEAE"@de , "Bambusaceae"@cs , "Eragrostidaceae"@en , "Eragrostidaceae"@es , "Maydaceae"@cs , "Bambusaceae"@en , "FESTUCACEAE"@de , "Chloridaceae"@lo , "Gramineae"@th , "Agrostidaceae"@fr , "Poeae"@tr , "Sporobolaceae"@en , "Zizanieae"@es , "Maydaceae"@th , "フィストゥカ科"@ja , "Lepturaceae"@lo , "Gramineae"@en , "Tripsaceae"@hu , "الفصيلة الفستوكية"@ar , "قصبيات"@ar , "Poeae"@sk , "خيزرانيات"@ar , "Stipaceae"@fr , "STIPACEAE"@de , "キビ亜科"@ja , "Zizanieae"@pt , "Eragrosteae"@tr , "Chloridaceae"@it , "Lepturaceae"@fr , "Tripsaceae"@tr , "Arundinaceae"@fr , "Hordeaceae"@pt , "Eragrostidaceae"@hu , "MELINIDEAE"@de , "Maydaceae"@sk , "Gramineae"@ru , "禾本科"@zh , "Eragrosteae"@pt , "Hordeaceae"@pl , "Stipaceae"@cs , "Eragrostidaceae"@th , "Agrostidaceae"@en , "Festucaceae"@fr , "Sporobolaceae"@es , "Chloridaceae"@sk , "GRAMINEAE"@de , "Zizanieae"@sk , "Eragrosteae"@es , "اراگروستئائه"@fa , "Zizanieae"@ru , "Chloridaceae"@cs , "इरैग्रोस्टीडेसी"@hi , "Festucaceae"@pl , "Panicaceae"@es , "Eragrostidaceae"@fr , "Melinideae"@ru , "Stipaceae"@tr , "Arundinellaceae"@hu , "Wiechlinowate"@pl , "Zizanieae"@en , "ट्रिपसेसी"@hi , "Avenaceae"@ru , "Buğdaygiller"@tr , "الفصيلة الحلفائية"@ar , "ZIZANIEAE"@de , "Gramineae"@pl , "Melinideae"@it , "Tripsaceae"@cs , "آوناسه"@fa , "LEPTURACEAE"@de , "Bambusaceae"@th , "Chloridaceae"@en , "MAYDACEAE"@de , "Phalaridaceae"@cs , "Graminae"@th , "Arundinaceae"@ru , "Maydaceae"@pl , "Melinideae"@tr , "Agrostidaceae"@hu , "Graminae"@sk , "Panicaceae"@fr , "Andropogonaceae"@es , "Maydaceae"@hu , "الفصيلة الفالاريسية"@ar , "شعيريات"@ar , "Phalaridaceae"@tr , "Stipaceae"@pl , "Lepturaceae"@th , "Eragrosteae"@hu , "Panicaceae"@it , "मेयडेसी (कुल)"@hi , "Zizanieae"@th , "Chloridaceae"@hu , "Eragrosteae"@pl , "Avenaceae"@lo , "الفصيلة الليبتورية"@ar , "Arundinellaceae"@pl , "Maydaceae"@ru , "Stipaceae"@sk , "Maydaceae"@it , "ARUNDINACEAE"@de , "स्पोरोबोलेसी"@hi , "Eragrostidaceae"@ru , "ガマグラス族"@ja , "الفصيلة الدٌخنية"@ar , "Stipaceae"@ru , "Stipaceae"@pt , "Sporobolaceae"@ru , "Phalaridaceae"@en , "Hordeaceae"@sk , "Poeae"@ru , "Graminae"@cs , "Andropogonaceae"@fr , "PHALARIDACEAE"@de , "Eragrosteae"@lo , "ARUNDINELLACEAE"@de , "Agrostidaceae"@cs , "Agrostidaceae"@th , "Phalaridaceae"@it , "الفصيلة الرزية"@ar , "Chloridaceae"@tr , "Panicaceae"@ru , "arundinaceae"@sk , "Hordeaceae"@en , "agrostidaceae"@sk , "ORYZACEAE"@de , "arundinellaceae"@sk , "زيزانيائه"@fa , "Phalaridaceae"@ru , "Chloridaceae"@es , "Tripsaceae"@pl , "Eragrosteae"@en , "Agrostidaceae"@it , "Andropogonaceae"@it , "Oryzaceae"@tr , "Panicaceae"@pl , "Tripsaceae"@th , "एरून्डीनेलासी"@hi , "Oryzaceae"@hu , "Agrostidaceae"@es , "Andropogonaceae"@tr , "Oryzaceae"@th , "ग्रैमीनी"@hi , "Melinideae"@cs , "Stipaceae"@it , "Lepturaceae"@es , "گندميان"@fa , "Gramineae"@tr , "Eragrostidaceae"@lo , "Gramineae"@hu , "Poeae"@th , "Chloridaceae"@pl , "फैलेरिडेसी"@hi ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_330269>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#OrderRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Poales"@es , "Poales"@cs , "Poales"@sk , "Poales"@pt , "Poales"@de , "Poales"@en , "Poales"@fr , "벼목"@ko , "Poales"@hu , "Poales"@tr , "Poales"@pl , "Poales"@it ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_330109> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Poales"@es , "Poales"@cs , "Poales"@sk , "Poales"@pt , "Poales"@de , "Poales"@en , "Poales"@fr , "벼목"@ko , "Poales"@hu , "Poales"@tr , "Poales"@pl , "Poales"@it ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_49904>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#Taxon> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "організми"@uk , "организмы"@ru , "生物体"@zh , "జీవులు"@te , "Organismos"@es , "organisms"@en , "Organizma"@tr , "organismy"@cs , "Organisme"@fr , "Organismus"@de , "Gaeabionta"@en , "organisma"@ms , "život na zemi"@cs , "life on earth"@en , "Lebewesen"@de , "Gaeabionta"@cs ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "організми"@uk , "организмы"@ru , "生物体"@zh , "జీవులు"@te , "Organismos"@es , "organisms"@en , "Organizma"@tr , "organismy"@cs , "Organisme"@fr , "Organismus"@de ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Gaeabionta"@en , "organisma"@ms , "život na zemi"@cs , "life on earth"@en , "Lebewesen"@de , "Gaeabionta"@cs ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_330940>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Dominio (taxa)"@it , "Domäne (Taxa)"@de , "domain (taxa)"@en , "nadříše (taxon)"@cs , "doména (taxon)"@cs , "nadříše"@cs , "empire (taxa)"@en , "Superregno"@it , "superregnum"@en , "superkingdom"@en , "doména"@cs ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+<http://aims.fao.org/aos/agrovoc/c_330944>
+        a       <http://aims.fao.org/aos/agrovoc/c_330940> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Eukaryota"@fr , "Eukaryota"@en , "Eukaryota"@tr , "Eukaryota"@cs , "Eukaryota"@es , "Eukaryota"@de , "Ökaryot"@tr , "eukariotní organismy"@cs , "eukaryotes"@en , "eukarya"@en , "jaderné organismy"@cs ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_49904> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Eukaryota"@fr , "Eukaryota"@en , "Eukaryota"@tr , "Eukaryota"@cs , "Eukaryota"@es , "Eukaryota"@de ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Ökaryot"@tr , "eukariotní organismy"@cs , "eukaryotes"@en , "eukarya"@en , "jaderné organismy"@cs ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_330109>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#ClassRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "외떡잎식물"@ko , "Liliopsida"@de , "Liliopsida"@cs , "Liliopsida"@ar , "Liliopsida"@pt , "Liliopsida"@hu , "Liliopsida"@tr , "Liliopsida"@pl , "Liliopsida"@sk , "Liliopsida"@fr , "Liliopsida"@en , "Liliopsida"@it , "Liliopsida"@es , "Bir çenekliler"@tr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_330268> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "외떡잎식물"@ko , "Liliopsida"@de , "Liliopsida"@cs , "Liliopsida"@ar , "Liliopsida"@pt , "Liliopsida"@hu , "Liliopsida"@tr , "Liliopsida"@pl , "Liliopsida"@sk , "Liliopsida"@fr , "Liliopsida"@en , "Liliopsida"@it , "Liliopsida"@es ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Bir çenekliler"@tr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_330268>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#PhylumRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Magnoliophyta"@zh , "Magnoliophyta"@es , "속씨식물문"@ko , "Magnoliophyta"@fa , "Magnoliophyta"@de , "Magnoliophyta"@fr , "Magnoliophyta"@sk , "Magnoliophyta"@tr , "Magnoliophyta"@it , "Magnoliophyta"@ja , "Magnoliophyta"@ar , "Magnoliophyta"@pl , "Magnoliophyta"@en , "Magnoliophyta"@pt , "Magnoliophyta"@hu , "Magnoliophyta"@th , "Magnoliophyta"@cs , "Angiospermae"@zh , "Angiospermae"@cs , "Angiospermae"@pt , "속씨식물"@ko , "Angiospermae"@ja , "angiospermae"@en , "Angiospermae"@es , "Angiospermae"@tr , "Angiospermae"@ar , "Angiospermae"@fr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7286> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Magnoliophyta"@zh , "Magnoliophyta"@es , "속씨식물문"@ko , "Magnoliophyta"@fa , "Magnoliophyta"@de , "Magnoliophyta"@fr , "Magnoliophyta"@sk , "Magnoliophyta"@tr , "Magnoliophyta"@it , "Magnoliophyta"@ja , "Magnoliophyta"@ar , "Magnoliophyta"@pl , "Magnoliophyta"@en , "Magnoliophyta"@pt , "Magnoliophyta"@hu , "Magnoliophyta"@th , "Magnoliophyta"@cs ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Angiospermae"@zh , "Angiospermae"@cs , "Angiospermae"@pt , "속씨식물"@ko , "Angiospermae"@ja , "angiospermae"@en , "Angiospermae"@es , "Angiospermae"@tr , "Angiospermae"@ar , "Angiospermae"@fr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_7286>
+        a       <http://aims.fao.org/aos/agrovoc/c_330960> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Spermatophyta"@it , "ذوات البذور"@ar , "Spermatophyta"@sk , "种子植物门"@zh , "Spermatophyta"@es , "종자식물"@ko , "Spermatophyta"@de , "種子植物"@ja , "دانه‌رستیان"@fa , "Spermatophyta"@cs , "Spermatophyta"@pt , "Spermatophyta"@pl , "Spermatophyta"@lo , "Spermatophyta"@tr , "Spermatophyta"@hu , "Spermatophyta"@en , "Spermatophyta"@th , "Spermatophyta"@ru , "स्पर्मेटोफाइटा"@hi , "Spermatophyta"@fr , "種子植物門"@ja , "Fanerogame"@it , "Piante con fiori"@it , "현화식물"@ko , "семенные растения"@ru , "Phanérogame"@fr , "virágos növény"@hu , "Rośliny jawnopłciowe"@pl , "현화식물류"@ko , "Phanerogamia"@sk , "顕花植物"@ja , "Plantas superiores"@es , "Phanerogams"@en , "Fanerogamia"@pt , "显花植物"@zh , "seed plants"@en , "BLUETENPFLANZE"@de , "цветковые растения"@ru , "Fanerógamas"@es , "kvetoucí rostliny"@cs , "పుష్పించే మొక్కలు"@te , "اسپرماتوفیت‌ها"@fa , "явнобрачные растения"@ru , "اسپرماتوفیتا"@fa , "Çiçekli bitkiler"@tr , "维管植物"@zh , "kvitnúce rastliny"@sk , "Phanerogamia"@en , "PHANEROGAMAE"@de , "Roślina kwiatowa"@pl , "Espermatófita"@pt , "گیاهان گلدار"@fa , "flowering plants"@en , "पुष्पोदूर्भिद / पुष्पीपादप"@hi , "Spermatophyte"@fr , "spermatophytes"@en , "Espermatofitos"@es , "पुष्पादित पौधे"@hi , "พืชมีดอก"@th , "Phanerogamia"@cs ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_7838> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Spermatophyta"@it , "ذوات البذور"@ar , "Spermatophyta"@sk , "种子植物门"@zh , "Spermatophyta"@es , "종자식물"@ko , "Spermatophyta"@de , "種子植物"@ja , "دانه‌رستیان"@fa , "Spermatophyta"@cs , "Spermatophyta"@pt , "Spermatophyta"@pl , "Spermatophyta"@lo , "Spermatophyta"@tr , "Spermatophyta"@hu , "Spermatophyta"@en , "Spermatophyta"@th , "Spermatophyta"@ru , "स्पर्मेटोफाइटा"@hi , "Spermatophyta"@fr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "種子植物門"@ja , "Fanerogame"@it , "Piante con fiori"@it , "현화식물"@ko , "семенные растения"@ru , "Phanérogame"@fr , "virágos növény"@hu , "Rośliny jawnopłciowe"@pl , "현화식물류"@ko , "Phanerogamia"@sk , "顕花植物"@ja , "Plantas superiores"@es , "Phanerogams"@en , "Fanerogamia"@pt , "显花植物"@zh , "seed plants"@en , "BLUETENPFLANZE"@de , "цветковые растения"@ru , "Fanerógamas"@es , "kvetoucí rostliny"@cs , "పుష్పించే మొక్కలు"@te , "اسپرماتوفیت‌ها"@fa , "явнобрачные растения"@ru , "اسپرماتوفیتا"@fa , "Çiçekli bitkiler"@tr , "维管植物"@zh , "kvitnúce rastliny"@sk , "Phanerogamia"@en , "PHANEROGAMAE"@de , "Roślina kwiatowa"@pl , "Espermatófita"@pt , "گیاهان گلدار"@fa , "flowering plants"@en , "पुष्पोदूर्भिद / पुष्पीपादप"@hi , "Spermatophyte"@fr , "spermatophytes"@en , "Espermatofitos"@es , "पुष्पादित पौधे"@hi , "พืชมีดอก"@th , "Phanerogamia"@cs ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_330960>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "superdivision"@en , "Superdivisione"@it , "nadoddělení"@cs , "Überstamm"@de , "Superphylum"@it , "Stammgruppe"@de , "Ueberstamm"@de , "Superphylum"@de , "superphylum"@en ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+<http://aims.fao.org/aos/agrovoc/c_7838>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#Taxon> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Tracheophyta"@cs , "Tracheophyta"@lo , "维管植物门"@zh , "Tracheophyta"@th , "Tracheophyta"@it , "Tracheophyta"@pt , "Tracheophyta"@sk , "Tracheophyta"@fr , "관속식물"@ko , "TRACHEOPHYTA"@de , "Tracheophyta"@es , "گیاهان آوندی"@fa , "نباتات وعائية"@ar , "Tracheophyta"@ru , "Tracheophyta"@tr , "Tracheophyta"@pl , "ट्रैकियोफाइटा"@hi , "Tracheophyta"@en , "Tracheophyta"@hu , "管束植物門"@ja , "cévnaté rostliny"@cs , "유관속식물"@ko , "vascular plants"@en , "تراکئوفیت‌ها"@fa , "تراکئوفیتا"@fa ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_330288> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Tracheophyta"@cs , "Tracheophyta"@lo , "维管植物门"@zh , "Tracheophyta"@th , "Tracheophyta"@it , "Tracheophyta"@pt , "Tracheophyta"@sk , "Tracheophyta"@fr , "관속식물"@ko , "TRACHEOPHYTA"@de , "Tracheophyta"@es , "گیاهان آوندی"@fa , "نباتات وعائية"@ar , "Tracheophyta"@ru , "Tracheophyta"@tr , "Tracheophyta"@pl , "ट्रैकियोफाइटा"@hi , "Tracheophyta"@en , "Tracheophyta"@hu , "管束植物門"@ja ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "cévnaté rostliny"@cs , "유관속식물"@ko , "vascular plants"@en , "تراکئوفیت‌ها"@fa , "تراکئوفیتا"@fa ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_330074>
+        a       <http://ontology.irstea.fr/AgronomicTaxon#KingdomRank> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Plantae"@pl , "Plantae"@it , "Plantae"@es , "Plantae"@cs , "Plantae"@tr , "Plantae"@fr , "Plantae"@de , "Plantae"@hu , "Plantae"@en , "Plantae"@sk , "Plantae"@pt , "Metaphyta"@cs , "metaphyta"@en , "vegetabilia"@en , "Vegetabilia"@cs ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_330944> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Plantae"@pl , "Plantae"@it , "Plantae"@es , "Plantae"@cs , "Plantae"@tr , "Plantae"@fr , "Plantae"@de , "Plantae"@hu , "Plantae"@en , "Plantae"@sk , "Plantae"@pt ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Metaphyta"@cs , "metaphyta"@en , "vegetabilia"@en , "Vegetabilia"@cs ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_330288>
+        a       <http://aims.fao.org/aos/agrovoc/c_330955> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Embryophyta"@en , "Embryophyta"@cs , "Embryophyta"@tr , "Embryobionta"@tr , "embryobionta"@en , "Embryobionta"@cs , "Tohumlu bitkiler"@tr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasHigherRank>
+                <http://aims.fao.org/aos/agrovoc/c_330074> ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                "Embryophyta"@en , "Embryophyta"@cs , "Embryophyta"@tr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                "Embryobionta"@tr , "embryobionta"@en , "Embryobionta"@cs , "Tohumlu bitkiler"@tr ;
+        <http://ontology.irstea.fr/AgronomicTaxon#inScheme>
+                <http://ontology.irstea.fr/AGROVOCTaxon#classification_AGROVOC> .
+
+<http://aims.fao.org/aos/agrovoc/c_330955>
+        a       <http://www.w3.org/2002/07/owl#Class> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Unterreich"@de , "Sottoregno"@it , "subkingdom"@en , "podříše"@cs ;
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://ontology.irstea.fr/AgronomicTaxon#Taxon> .
+
+[ a       <http://www.w3.org/2003/11/swrl#Imp> ;
+  <http://www.w3.org/2003/11/swrl#body>
+          [ a       <http://www.w3.org/2003/11/swrl#AtomList> ;
+            <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+                    [ a       <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                      <http://www.w3.org/2003/11/swrl#argument1>
+                              <urn:swrl#o> ;
+                      <http://www.w3.org/2003/11/swrl#classPredicate>
+                              <http://ontology.irstea.fr/AgronomicTaxon#LivingOrganism>
+                    ] ;
+            <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                    [ a       <http://www.w3.org/2003/11/swrl#AtomList> ;
+                      <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+                              [ a       <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                <http://www.w3.org/2003/11/swrl#argument1>
+                                        <urn:swrl#s> ;
+                                <http://www.w3.org/2003/11/swrl#classPredicate>
+                                        <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank>
+                              ] ;
+                      <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                              [ a       <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+                                        [ a       <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                          <http://www.w3.org/2003/11/swrl#argument1>
+                                                  <urn:swrl#o> ;
+                                          <http://www.w3.org/2003/11/swrl#argument2>
+                                                  <urn:swrl#s> ;
+                                          <http://www.w3.org/2003/11/swrl#propertyPredicate>
+                                                  <http://ontology.irstea.fr/AgronomicTaxon#isClassifiedBy>
+                                        ] ;
+                                <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                                        [ a       <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+                                                  [ a       <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                    <http://www.w3.org/2003/11/swrl#argument1>
+                                                            <urn:swrl#s> ;
+                                                    <http://www.w3.org/2003/11/swrl#argument2>
+                                                            <urn:swrl#label> ;
+                                                    <http://www.w3.org/2003/11/swrl#propertyPredicate>
+                                                            <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                                                  ] ;
+                                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                                                  ()
+                                        
+                                        ]
+                              ]
+                    ]
+          ] ;
+  <http://www.w3.org/2003/11/swrl#head>
+          [ a       <http://www.w3.org/2003/11/swrl#AtomList> ;
+            <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+                    [ a       <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                      <http://www.w3.org/2003/11/swrl#argument1>
+                              <urn:swrl#o> ;
+                      <http://www.w3.org/2003/11/swrl#argument2>
+                              <urn:swrl#label> ;
+                      <http://www.w3.org/2003/11/swrl#propertyPredicate>
+                              <http://ontology.irstea.fr/AgronomicTaxon#hasScientificName>
+                    ] ;
+            <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                    ()
+          
+          ]
+] .
+
+[ a       <http://www.w3.org/2003/11/swrl#Imp> ;
+  <http://www.w3.org/2003/11/swrl#body>
+          [ a       <http://www.w3.org/2003/11/swrl#AtomList> ;
+            <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+                    [ a       <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                      <http://www.w3.org/2003/11/swrl#argument1>
+                              <urn:swrl#o> ;
+                      <http://www.w3.org/2003/11/swrl#classPredicate>
+                              <http://ontology.irstea.fr/AgronomicTaxon#LivingOrganism>
+                    ] ;
+            <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                    [ a       <http://www.w3.org/2003/11/swrl#AtomList> ;
+                      <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+                              [ a       <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                <http://www.w3.org/2003/11/swrl#argument1>
+                                        <urn:swrl#s> ;
+                                <http://www.w3.org/2003/11/swrl#classPredicate>
+                                        <http://ontology.irstea.fr/AgronomicTaxon#SpecyRank>
+                              ] ;
+                      <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                              [ a       <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+                                        [ a       <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                          <http://www.w3.org/2003/11/swrl#argument1>
+                                                  <urn:swrl#o> ;
+                                          <http://www.w3.org/2003/11/swrl#argument2>
+                                                  <urn:swrl#s> ;
+                                          <http://www.w3.org/2003/11/swrl#propertyPredicate>
+                                                  <http://ontology.irstea.fr/AgronomicTaxon#isClassifiedBy>
+                                        ] ;
+                                <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                                        [ a       <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+                                                  [ a       <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                    <http://www.w3.org/2003/11/swrl#argument1>
+                                                            <urn:swrl#s> ;
+                                                    <http://www.w3.org/2003/11/swrl#argument2>
+                                                            <urn:swrl#label> ;
+                                                    <http://www.w3.org/2003/11/swrl#propertyPredicate>
+                                                            <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                                                  ] ;
+                                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                                                  ()
+                                        
+                                        ]
+                              ]
+                    ]
+          ] ;
+  <http://www.w3.org/2003/11/swrl#head>
+          [ a       <http://www.w3.org/2003/11/swrl#AtomList> ;
+            <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+                    [ a       <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                      <http://www.w3.org/2003/11/swrl#argument1>
+                              <urn:swrl#o> ;
+                      <http://www.w3.org/2003/11/swrl#argument2>
+                              <urn:swrl#label> ;
+                      <http://www.w3.org/2003/11/swrl#propertyPredicate>
+                              <http://ontology.irstea.fr/AgronomicTaxon#hasVernacularName>
+                    ] ;
+            <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                    ()
+          
+          ]
+] .

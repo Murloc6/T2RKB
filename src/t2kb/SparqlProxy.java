@@ -91,7 +91,7 @@ public class SparqlProxy
                                             //"PREFIX foaf: <http://xmlns.com/foaf/0.1/>"+
                                             //"PREFIX dc: <http://purl.org/dc/elements/1.1/>"+
                                             //"PREFIX pf: <http://jena.hpl.hp.com/ARQ/property#>"+
-                                            "PREFIX agrovoc: <http://aims.fao.org/aos/agrontology#>"+q;
+                                            "PREFIX agrovoc: <http://aims.fao.org/aos/agrontology#>"+q; 
              return query;
         }
       
@@ -162,6 +162,7 @@ public class SparqlProxy
             {
                  URL url = new URL(this.urlServer+"query?output=json&query="+URLEncoder.encode(query, "UTF-8"));
               //Create connection
+                 //System.out.println("URL : "+url.toString());
               connection = (HttpURLConnection)url.openConnection();
               connection.setRequestMethod("GET");
               connection.setRequestProperty("Content-Type", 
@@ -224,9 +225,15 @@ public class SparqlProxy
         }
     
         public boolean storeData(StringBuilder query)
+        {
+            return this.storeData(query, true);
+        }
+        
+        public boolean storeData(StringBuilder query, Boolean addPrefix)
     {
         boolean ret = true;
-        query = SparqlProxy.makeQuery(query);
+        if(addPrefix)
+            query = SparqlProxy.makeQuery(query);
          HttpURLConnection connection = null;  
             try 
             {

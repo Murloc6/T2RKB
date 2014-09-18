@@ -26,13 +26,16 @@ public class T2KB {
      */
     public static void main(String[] args) 
     {
-       ThesaurusProcess tp = new ThesaurusProcess("http://localhost:3030/AGROVOC-SKOSIFIED/", "http://localhost:3030/T2KB_OUT/");
+       //ThesaurusProcess tp = new ThesaurusProcess("http://localhost:3030/AGROVOC-SKOSIFIED/", "http://localhost:3030/T2KB_OUT_triticum/", "in/agronomicTaxon_testTTL.owl");
+       ThesaurusProcess tp = new ThesaurusProcess("http://amarger.murloc.fr:8080/AGROVOC-SKOSIFIED/", "http://amarger.murloc.fr:8080/Agrovoc2KB_TESTClass_out/", "in/agronomicTaxon.owl");
        
        System.out.println("Begin thesaurus treatment ...");
-        tp.loadAllConcepts();
+       //http://aims.fao.org/aos/agrovoc/c_330074  -> plantae
+       // http://aims.fao.org/aos/agrovoc/c_7950  -> Triticum
+        tp.loadAllConcepts("http://aims.fao.org/aos/agrovoc/c_330074");
         System.out.println("thesaurus treated!");
         
-        String dateFileName = new SimpleDateFormat("dd-MM_HH:mm_||_").format(new Date());
+        String dateFileName = new SimpleDateFormat("dd-MM_HH-m_").format(new Date());
         
         System.out.println("Exporting the KB to the file out/"+dateFileName+"_AGROVOC_OWL.owl ...");
         tp.exportKBToFile(dateFileName+"_AGROVOC_OWL");

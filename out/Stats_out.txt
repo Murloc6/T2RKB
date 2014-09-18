@@ -1,0 +1,4 @@
+Nb subClassOf discovered :  331 
+Nb subClassOf validated by WN : 156
+Nb subClassOf not found in WN : 111
+Nb subClassOf not validated by WN : 64
