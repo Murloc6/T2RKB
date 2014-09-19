@@ -161,6 +161,7 @@ public class ThesaurusProcess
                 if(rankUri == null)
                 {
                     //rankUri = "http://ontology.irstea.fr/AgronomicTaxon#Taxon";
+                    this.ranksAlign.put(uriInRank, uriInRank);
                     currentQueryPart += "<"+uriInRank+"> rdf:type owl:Class; rdfs:subClassOf  <http://ontology.irstea.fr/AgronomicTaxon#Taxon>;  ";
                     ArrayList<JSONObject> labelsClass = this.spIn.sendQuery("SELECT * WHERE {<"+uriInRank+">  (<http://www.w3.org/2004/02/skos/core#prefLabel>|<http://www.w3.org/2004/02/skos/core#altLabel>) ?label}");
                     for(JSONObject sLabel : labelsClass)
