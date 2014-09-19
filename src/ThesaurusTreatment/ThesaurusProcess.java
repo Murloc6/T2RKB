@@ -97,6 +97,11 @@ public class ThesaurusProcess
     }
     
     
+    public boolean isAcceptLang(String lang)
+    {
+        return ((lang.compareToIgnoreCase("en") == 0) || (lang.compareToIgnoreCase("fr") == 0) || (lang.compareToIgnoreCase("de") == 0) || (lang.compareToIgnoreCase("es") == 0));
+    }
+    
     public void loadAllConcepts(String limitUri)
     {
         /*System.out.println("Initialize WordNet ...");
@@ -162,14 +167,14 @@ public class ThesaurusProcess
                     {
                         String lang = sLabel.getJSONObject("label").getString("xml:lang");
                         String label = SparqlProxy.cleanString(sLabel.getJSONObject("label").getString("value"));
-                        currentQueryPart += " rdfs:label ";
+                        //currentQueryPart += " rdfs:label ";
                         if(lang.isEmpty())
                         {
-                            currentQueryPart += " \" "+label+"\"; ";
+                            currentQueryPart += " rdfs:label  \" "+label+"\"; ";
                         }
-                        else
+                        else if(this.isAcceptLang(lang))
                         {
-                            currentQueryPart += "\""+label+"\"@"+lang+"; ";
+                            currentQueryPart += " rdfs:label  \""+label+"\"@"+lang+"; ";
                         }
                     }
                     
@@ -203,7 +208,7 @@ public class ThesaurusProcess
                             currentQueryPart += " <"+adomRelUri+"> \""+SparqlProxy.cleanString(val)+"\";";
                             currentQueryPart += " rdfs:label  \""+SparqlProxy.cleanString(val)+"\";";
                         }
-                        else
+                        else if (this.isAcceptLang(lang))
                         {
                             currentQueryPart += " <"+adomRelUri+"> \""+SparqlProxy.cleanString(val)+"\"@"+lang+";";
                             currentQueryPart += " rdfs:label \""+SparqlProxy.cleanString(val)+"\"@"+lang+";";
