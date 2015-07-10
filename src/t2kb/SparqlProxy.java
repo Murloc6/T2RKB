@@ -88,6 +88,7 @@ public class SparqlProxy
                                             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"+
                                             "PREFIX owl:    <http://www.w3.org/2002/07/owl#>"+
                                             "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"+
+                                            "PREFIX terms: <http://purl.org/dc/terms/>"+
                                             //"PREFIX foaf: <http://xmlns.com/foaf/0.1/>"+
                                             //"PREFIX dc: <http://purl.org/dc/elements/1.1/>"+
                                             //"PREFIX pf: <http://jena.hpl.hp.com/ARQ/property#>"+
@@ -101,9 +102,14 @@ public class SparqlProxy
                                             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"+
                                             "PREFIX owl:    <http://www.w3.org/2002/07/owl#>"+
                                             "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"+
+                                              " PREFIX terms: <http://purl.org/dc/terms/>"+
+                                            " PREFIX AgronomicTaxon: <http://ontology.irstea.fr/AgronomicTaxon#> "+
+                                             " PREFIX swrl: <http://www.w3.org/2003/11/swrl#>"+
+                                            " PREFIX swrlb: <http://www.w3.org/2003/11/swrlb#>"+
                                             //"PREFIX foaf: <http://xmlns.com/foaf/0.1/>"+
                                             //"PREFIX dc: <http://purl.org/dc/elements/1.1/>"+
                                             //"PREFIX pf: <http://jena.hpl.hp.com/ARQ/property#>"+
+                                            "PREFIX terms: <http://purl.org/dc/terms/>"+
                                             "PREFIX agrovoc: <http://aims.fao.org/aos/agrontology#>");
              query.append(q);
              

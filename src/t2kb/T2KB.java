@@ -27,7 +27,7 @@ public class T2KB {
     public static void main(String[] args) 
     {
        //ThesaurusProcess tp = new ThesaurusProcess("http://localhost:3030/AGROVOC-SKOSIFIED/", "http://localhost:3030/T2KB_OUT_triticum/", "in/agronomicTaxon_testTTL.owl");
-       ThesaurusProcess tp = new ThesaurusProcess("http://amarger.murloc.fr:8080/AGROVOC-SKOSIFIED/", "http://amarger.murloc.fr:8080/Agrovoc2KB_TESTClass_out/", "in/agronomicTaxon.owl");
+       ThesaurusProcess tp = new ThesaurusProcess("http://amarger.murloc.fr:8080/AGROVOC-SKOSIFIED/", "http://amarger.murloc.fr:8080/Agrovoc2KB_TESTClass_out/", "in/AgronomicTaxon.ttl");
        
        System.out.println("Begin thesaurus treatment ...");
        //http://aims.fao.org/aos/agrovoc/c_330074  -> plantae
